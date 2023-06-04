@@ -1,16 +1,9 @@
-import Input from "./components/Input/Input";
+import Dropdown from "./components/Input/Dropdown";
 
 function App() {
     return (
         <div className="App">
-            <header className="App-header">
-                <Input
-                    type="password"
-                    condition={0}
-                    placeholder="Text"
-                    label="Input"
-                />
-            </header>
+            <Dropdown label="Input" placeholder="Text" />
         </div>
     );
 }
