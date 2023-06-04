@@ -4,7 +4,12 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <Input condition={0} placeholder="Text" label="Input" />
+                <Input
+                    type="password"
+                    condition={0}
+                    placeholder="Text"
+                    label="Input"
+                />
             </header>
         </div>
     );
