@@ -22,17 +22,19 @@
     width: 100%
     display: block
     padding: 14px 45px 14px 20px
-    background-color: #272C44
-    border: 1px solid #272C44
+    background-color: $blue-4
+    border: 1px solid $blue-4
     color: $blue-3
     outline: none
     line-height: 20px
     box-sizing: border-box
     border-radius: 4px
+    font-weight: 500
     transition: border-color .123s ease-in, color .123s ease-in
 
     &::placeholder
         color: $gray
+        font-weight: 500
 
 .input_button
     position: absolute
@@ -58,3 +60,50 @@
     line-height: 16px
     display: inline-block
     margin-top: 4px
+
+.dropdown_button
+    width: 100%
+    padding: 14px 16px 14px 20px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    color: $gray
+    font-weight: 500
+    svg
+        transition: transform .123s ease-in-out
+
+.dropdown_button_span
+    font-size: 14px
+    line-height: 20px
+    color: $blue-3
+    font-weight: 500
+
+.dropdown_button__opened
+    border-radius: 4px 4px 0 0
+    svg
+        transform: rotate(180deg)
+
+.dropdown_menu
+    width: 100%
+    position: absolute
+    background-color: $blue-4
+    top: 100%
+    border-radius: 0 0 4px 4px
+
+.dropdown_list
+    list-style: none
+    margin: 0
+    padding: 0
+
+.dropdown_menu_item
+    padding: 12px 16px 12px 20px
+    font-size: 14px
+    line-height: 20px
+    color: $blue-3
+    font-weight: 500
+    cursor: pointer
+    user-select: none
+    &:hover
+        opacity: .75
+    &:active
+        opacity: .95
