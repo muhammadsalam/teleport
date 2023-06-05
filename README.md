@@ -1,54 +1,64 @@
+## Alliases
+
+-   **Component**: src/components/ - `Component/Input/Input.tsx`
+-   **Util**: src/utils/ - `Util/combineClassNames.ts`
+-   **Icon**: src/assets/images/icons/ - `Icon/arrow-bottom.svg`
+-   **Image**: src/assets/images/ - `Image/image.jpg`
+-   **Page**: src/pages/ - `Page/Home.tsx`
+-   **Layout**: src/layouts/ - `Layout/MainLayout.tsx`
+-   **Redux**: src/redux/ - `Redux/SomeFunction.ts`
+
 ## Project Structure
 
-- **public/**
+-   **public/**
 
-  - `index.html`
-  - `favicon.ico`
+    -   `index.html`
+    -   `favicon.ico`
 
-- **src/**
+-   **src/**
 
-  - **@types/**
+    -   **@types/**
 
-    - `index.d.ts`
+        -   `index.d.ts`
 
-  - **assets/**
+    -   **assets/**
 
-    - **images/**
-    - **fonts/**
+        -   **images/**
+        -   **fonts/**
 
-  - **components/**
+    -   **components/**
 
-    - **Header/**
-      - `Header.jsx`
-      - `Header.module.sass`
+        -   **Header/**
+            -   `Header.jsx`
+            -   `Header.module.sass`
 
-  - **layouts/**
+    -   **layouts/**
 
-    - `MainLayout.jsx`
+        -   `MainLayout.jsx`
 
-  - **pages/**
+    -   **pages/**
 
-    - **Home/**
-      - `Home.jsx`
-      - `Home.module.sass`
+        -   **Home/**
+            -   `Home.jsx`
+            -   `Home.module.sass`
 
-  - **redux/**
+    -   **redux/**
 
-    - **cart/**
-      - `selectors.js`
-      - `slice.js`
-      - `types.js`
-    - `store.js`
+        -   **cart/**
+            -   `selectors.js`
+            -   `slice.js`
+            -   `types.js`
+        -   `store.js`
 
-  - **utils/**
+    -   **utils/**
 
-    - `someFunctions.js`
+        -   `someFunctions.js`
 
-  - `App.js`
-  - `variables.sass`
-  - `index.sass`
-  - `index.js`
+    -   `App.js`
+    -   `variables.sass`
+    -   `index.sass`
+    -   `index.js`
 
-- `.gitignore`
-- `package-lock.json`
-- `package.json`
+-   `.gitignore`
+-   `package-lock.json`
+-   `package.json`
