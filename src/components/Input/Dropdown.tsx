@@ -1,7 +1,8 @@
-import { ChangeEvent, FC, MouseEvent, useState } from "react";
+import { FC, useRef, useState } from "react";
 import styles from "./Input.module.sass";
 import { combineClassNames } from "Util/combineClassNames";
 import { ReactComponent as ArrowBottom } from "Icon/arrow-bottom.svg";
+import { CSSTransition } from "react-transition-group";
 
 interface DropdownProps {
     placeholder: string;
@@ -11,10 +12,12 @@ interface DropdownProps {
 
 const Dropdown: FC<DropdownProps> = ({ options = [], label, placeholder }) => {
     const [dropdownValue, setDropdownValue] = useState<string>(placeholder);
-    const [isActive, setIsActive] = useState<boolean>(false);
+    const [isMounted, setIsMounted] = useState<boolean>(false);
+
+    const dropdownRef = useRef(null);
 
     function handleButton() {
-        setIsActive(!isActive);
+        setIsMounted(!isMounted);
     }
 
     function handleItemClick(option: string) {
@@ -29,7 +32,7 @@ const Dropdown: FC<DropdownProps> = ({ options = [], label, placeholder }) => {
                     className={combineClassNames(
                         styles.dropdown_button,
                         styles.input_field,
-                        isActive && styles.dropdown_button__opened
+                        isMounted && styles.dropdown_button__opened
                     )}
                     onClick={handleButton}
                 >
@@ -43,8 +46,18 @@ const Dropdown: FC<DropdownProps> = ({ options = [], label, placeholder }) => {
                     </span>
                     <ArrowBottom />
                 </button>
-                {isActive && (
-                    <div className={styles.dropdown_menu}>
+
+                <CSSTransition
+                    in={isMounted}
+                    timeout={300}
+                    nodeRef={dropdownRef}
+                    classNames={{
+                        enterActive: styles.dropdown_menu_enter__active,
+                        enterDone: styles.dropdown_menu_enter__done,
+                    }}
+                    unmountOnExit
+                >
+                    <div className={styles.dropdown_menu} ref={dropdownRef}>
                         <ul className={styles.dropdown_list}>
                             {options.map((option) => (
                                 <>
@@ -65,7 +78,7 @@ const Dropdown: FC<DropdownProps> = ({ options = [], label, placeholder }) => {
                             ))}
                         </ul>
                     </div>
-                )}
+                </CSSTransition>
             </div>
         </label>
     );

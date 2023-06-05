@@ -9,7 +9,7 @@ declare module '*.svg' {
   export default src;
 }
 
-
+declare module 'react-transition-group';
   
   declare module '*.png' {
     const content: any;
