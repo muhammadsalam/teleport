@@ -328,6 +328,7 @@ module.exports = function (webpackEnv) {
                 Layout: path.resolve("src/layouts/"),
                 Page: path.resolve("src/pages/"),
                 Redux: path.resolve("src/redux/"),
+                Hook: path.resolve("src/hooks/"),
 
                 // Support React Native Web
                 // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/

@@ -25,6 +25,7 @@
         "Layout/*": ["layouts/*"],
         "Page/*": ["pages/*"],
         "Redux/*": ["redux/*"],
+        "Hook/*": ["hooks/*"],
       }
   
     },

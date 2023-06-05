@@ -7,6 +7,7 @@
 -   **Page**: src/pages/ - `Page/Home.tsx`
 -   **Layout**: src/layouts/ - `Layout/MainLayout.tsx`
 -   **Redux**: src/redux/ - `Redux/SomeFunction.ts`
+-   **Hook**: src/redux/ - `Hook/useCustomHook.ts`
 
 ## Project Structure
 
