@@ -1,6 +1,6 @@
 import { ReactComponent as ArrowBottom } from "Icon/arrow-bottom.svg";
 import { combineClassNames } from "Util/combineClassNames";
-import { FC, useRef, useState } from "react";
+import { FC, Fragment, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { useOutsideClick } from "Hook/useOutsideClick";
 import styles from "./Input.module.sass";
@@ -41,8 +41,9 @@ const Dropdown: FC<DropdownProps> = ({ options = [], label, placeholder }) => {
                 >
                     <span
                         className={
-                            dropdownValue !== placeholder &&
-                            styles.dropdown_button_span
+                            dropdownValue !== placeholder
+                                ? styles.dropdown_button_span
+                                : ""
                         }
                     >
                         {dropdownValue}
@@ -63,10 +64,9 @@ const Dropdown: FC<DropdownProps> = ({ options = [], label, placeholder }) => {
                     <div className={styles.dropdown_menu} ref={dropdownRef}>
                         <ul className={styles.dropdown_list}>
                             {options.map((option) => (
-                                <>
+                                <Fragment key={option}>
                                     {option !== dropdownValue && (
                                         <li
-                                            key={option}
                                             className={
                                                 styles.dropdown_menu_item
                                             }
@@ -77,7 +77,7 @@ const Dropdown: FC<DropdownProps> = ({ options = [], label, placeholder }) => {
                                             {option}
                                         </li>
                                     )}
-                                </>
+                                </Fragment>
                             ))}
                         </ul>
                     </div>
