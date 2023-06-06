@@ -1,8 +1,9 @@
-import { FC, useRef, useState } from "react";
-import styles from "./Input.module.sass";
-import { combineClassNames } from "Util/combineClassNames";
 import { ReactComponent as ArrowBottom } from "Icon/arrow-bottom.svg";
+import { combineClassNames } from "Util/combineClassNames";
+import { FC, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
+import { useOutsideClick } from "Hook/useOutsideClick";
+import styles from "./Input.module.sass";
 
 interface DropdownProps {
     placeholder: string;
@@ -14,15 +15,17 @@ const Dropdown: FC<DropdownProps> = ({ options = [], label, placeholder }) => {
     const [dropdownValue, setDropdownValue] = useState<string>(placeholder);
     const [isMounted, setIsMounted] = useState<boolean>(false);
 
-    const dropdownRef = useRef(null);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
-    function handleButton() {
+    function handleMountedChange() {
         setIsMounted(!isMounted);
     }
 
     function handleItemClick(option: string) {
         setDropdownValue(option);
     }
+
+    useOutsideClick(dropdownRef, handleMountedChange, styles.input);
 
     return (
         <label className={styles.input}>
@@ -34,7 +37,7 @@ const Dropdown: FC<DropdownProps> = ({ options = [], label, placeholder }) => {
                         styles.input_field,
                         isMounted && styles.dropdown_button__opened
                     )}
-                    onClick={handleButton}
+                    onClick={handleMountedChange}
                 >
                     <span
                         className={
