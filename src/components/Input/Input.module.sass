@@ -111,7 +111,148 @@
     font-weight: 500
     cursor: pointer
     user-select: none
+    transition: opacity .123s ease-in
     &:hover
         opacity: .75
     &:active
         opacity: .95
+
+.datepicker__title
+    font-weight: 700
+    color: $blue-3
+    margin-right: 36px
+
+.datepicker__block
+    background-color: $blue-4
+    display: inline-flex
+    align-items: center
+    overflow: hidden
+    border-radius: 4px
+
+.datepicker__wrapper
+    background-color: $blue-4
+    border-radius: 4px
+    display: flex
+    padding: 20px
+
+.leftList
+    padding: 0
+    margin: 0
+    list-style: none
+    display: flex
+    flex-direction: column
+    padding-right: 16px
+    padding-bottom: 12px
+    margin-right: 16px
+    border-right: 1px solid $gray
+
+.left__item
+    padding: 4px 12px
+    font-size: 14px
+    font-weight: 400
+    line-height: 24px
+    letter-spacing: -0.006em
+    color: $blue-3
+    cursor: pointer
+    transition: opacity .123s ease-in
+    width: 145px
+    &:hover
+        opacity: .75
+    &:active
+        opacity: .95
+
+.left__item_active
+    color: $white
+    font-weight: 600
+    cursor: default
+    &:hover
+        opacity: 1
+
+:global(.calendar)
+    border-radius: 0 0 4px 4px
+    overflow: hidden
+    background-color: $blue-4
+    color: $blue-3
+
+:global(.picker__trigger)
+    padding-right: 61px
+    padding-left: 20px
+    cursor: pointer
+    background: url('../../assets/images/icons/calendar.svg') no-repeat right 12px center
+    transition: .123s ease-in opacity
+    &:hover
+        opacity: .75
+    &:active
+        opacity: .95
+
+:global(.picker__trigger .icon-right-arrow)
+    display: none
+
+:global(.calendar__list)
+    display: flex
+    gap: 24px
+
+:global(.calendar__item)
+    border: 0
+
+:global(.calendar__day--6), :global(.calendar__day--0), :global(.calendar__body--table th), :global(.calendar__day--today)
+    color: inherit
+    background-color: transparent
+
+:global(.calendar__day)
+    width: 32px
+    height: 32px
+    vertical-align: middle
+    text-align: center
+    font-size: 14px
+    line-height: 24px
+    font-weight: 400
+    letter-spacing: -0.006em
+    padding-top: 0
+
+:global(.calendar__day--start)
+    border-radius: 4px 0 0 4px
+
+:global(.calendar__day--end)
+    border-radius: 0 4px 4px 0
+
+:global(.calendar__day--start), :global(.calendar__day--end), :global(.calendar__day--selected), :global(.calendar__day:hover:not(.calendar__day--disabled))
+    background-color: #103D9B
+    color: $white
+
+:global(.calendar__day--range)
+    background-color: #5184D0
+    color: #202537
+
+:global(.calendar__head)
+    background-color: transparent
+
+:global(.range-picker-input)
+    display: flex
+    align-items: center
+    width: auto
+    gap: 5px
+
+:global(.picker-input)
+    width: 80px
+    user-select: none
+
+:global(.picker-input__text)
+    color: $blue-3
+    font-weight: 500
+    font-size: 14px
+    line-height: 20px
+    background-color: transparent
+    cursor: pointer
+    padding: 14px 0 !important
+
+:global(.range-picker-input)
+    border: 0
+
+:global(.range-picker-input__icon)
+    &:before
+        content: '-'
+        font-weight: 500
+        font-size: 14px
+        line-height: 20px
+        color: $blue-3
