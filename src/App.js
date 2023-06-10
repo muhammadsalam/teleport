@@ -1,13 +1,9 @@
-import Dropdown from "./components/Input/Dropdown";
+import Calendar from "./components/Input/Calendar";
 
 function App() {
     return (
         <div className="App">
-            <Dropdown
-                options={["hh.ru", "google.com", "moomoo.moo"]}
-                label="Домен"
-                placeholder="Выберите домен"
-            />
+            <Calendar />
         </div>
     );
 }

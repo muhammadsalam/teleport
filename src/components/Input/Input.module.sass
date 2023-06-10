@@ -115,3 +115,210 @@
         opacity: .75
     &:active
         opacity: .95
+
+.datepicker
+    display: flex
+    align-items: center
+
+.datepicker__title
+    font-weight: 700
+    color: $blue-3
+    margin-right: 36px
+
+:global(.react-datepicker__triangle)
+    display: none
+
+.datepicker__wrapper
+    flex: 1
+    max-width: 248px
+    display: inline-flex
+
+    :global(.react-datepicker__input-container)
+        display: inline-flex
+
+.datepicker__input
+    color: $blue-3
+    font-weight: 500
+    font-size: 14px
+    line-height: 20px
+    background-color: #272C44
+    border-radius: 4px
+    cursor: pointer
+    padding: 14px 61px 14px 20px
+    border: 0
+    outline: none
+    width: 100%
+    background-image: url('../../assets/images/icons/calendar.svg')
+    background-repeat: no-repeat
+    background-position: right 12px center
+    &::placeholder
+        color: $gray
+    &:hover
+        opacity: .75
+    &:active
+        opacity: .95
+
+.datepicker__popper[data-placement^=bottom]
+    padding-top: 8px
+
+.datepicker__popper
+    transition: opacity .3s ease-in, margin-top .3s ease-in
+    opacity: 1
+    margin-top: 0
+
+.datepicker__popper_enter
+    opacity: 0
+    margin-top: -20px
+
+.datepicker__popper_enteractive
+    opacity: 1
+    margin-top: 0px
+    transition: opacity .3s ease-in, margin-top .3s ease-in
+
+.datepicker__popper_exit
+    opacity: 1
+    margin-top: 0px
+
+.datepicker__popper_exitactive
+    opacity: 0
+    margin-top: -20px
+    transition: opacity .3s ease-in, margin-top .3s ease-in
+
+.datepicker__popper_enterdone
+    opacity: 1
+    margin-top: 0px
+
+.datepicker__calendar
+    display: flex
+    align-items: flex-start
+    background-color: $blue-4
+    border: 0
+    border-radius: 4px
+    font-family: 'SF Pro Display', sans-serif
+    padding: 20px
+
+:global(.react-datepicker__header:not(.react-datepicker__header--has-time-select))
+    background-color: transparent
+    color: $blue-3
+    padding: 0
+    border-bottom: 0
+
+.datepicker__header
+    padding: 4px 0
+    position: relative
+
+.datepicker__navigation
+    border: 0
+    width: auto
+    height: auto
+    padding: 0
+    line-height: 0
+    position: absolute
+    background-color: transparent
+    top: 50%
+    transform: translateY(-50%)
+
+.datepicker__navigation_previous
+    left: 0px
+
+.datepicker__navigation_next
+    right: 0px
+
+.datepicker__month
+    font-size: 14px
+    font-weight: 600
+    line-height: 24px
+    letter-spacing: -0.006em
+    color: inherit
+    text-transform: capitalize
+
+:global(.react-datepicker__month)
+    margin: 8px 12px
+
+.datepicker__day_name
+    color: $gray
+    border-bottom: 1px solid $gray
+    text-transform: capitalize
+
+.datepicker__day
+    color: $blue-3
+    &:hover
+        background-color: #103D9B !important
+        color: $white !important
+    &:hover:not(:global(.react-datepicker__day--range-start)):not(:global(.react-datepicker__day--range-end)):not(:global(.react-datepicker__day--selecting-range-start)):not(:global(.react-datepicker__day--selecting-range-end))
+        border-radius: 0
+    &:global(.react-datepicker__day--in-range),
+    &:global(.react-datepicker__day--in-selecting-range)
+        background-color: #5184D0
+        color: #1E212D
+        border-radius: 0
+    &:global(.react-datepicker__day--range-start),
+    &:global(.react-datepicker__day--selecting-range-start)
+        background-color: #103D9B
+        color: $white
+        border-radius: 4px 0 0 4px !important
+    &:global(.react-datepicker__day--range-end),
+    &:global(.react-datepicker__day--selecting-range-end)
+        background-color: #103D9B
+        color: $white
+        border-radius: 0 4px 4px 0 !important
+    &:global(.react-datepicker__day--range-end.react-datepicker__day--range-start),
+    &:global(.react-datepicker__day--selecting-range-end.react-datepicker__day--selecting-range-start)
+        border-radius: 4px !important
+    &:global(.react-datepicker__day--outside-month)
+        opacity: 0
+        visibility: hidden
+        pointer-events: none
+
+.datepicker__day, .datepicker__day_name
+    vertical-align: middle
+    line-height: 32px
+    width: 32px
+    aspect-ratio: 1
+    margin: 0
+    letter-spacing: -0.006em
+    font-size: 14px
+    font-weight: 400
+
+:global(.react-datepicker__day:empty)
+    height: 0
+
+.leftList
+    padding: 0
+    margin: 0
+    list-style: none
+    display: flex
+    flex-direction: column
+    padding-right: 16px
+    padding-bottom: 12px
+    margin-right: 16px
+    border-right: 1px solid $gray
+
+.left__item
+    padding: 4px 12px
+    font-size: 14px
+    font-weight: 400
+    line-height: 24px
+    letter-spacing: -0.006em
+    color: $blue-3
+    cursor: pointer
+    transition: opacity .123s ease-in
+    width: 145px
+    &:hover
+        opacity: .75
+    &:active
+        opacity: .95
+
+.left__item_active
+    color: $white
+    font-weight: 600
+    cursor: default
+    &:hover
+        opacity: 1
+
+.calendar_right__buttons
+    float: right
+    display: flex
+    justify-content: flex-end
+    gap: 12px
+    margin-top: 8px
