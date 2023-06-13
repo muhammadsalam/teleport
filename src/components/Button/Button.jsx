@@ -5,53 +5,53 @@ import { ReactComponent as OpenSVG } from '../../assets/images/icons/open.svg';
 import { ReactComponent as CopySVG } from '../../assets/images/icons/copy.svg';
 
 const Button = {
-    Hug: ({ disabled = false, variant = 'red', children }) => {
+    Hug: ({ disabled = false, variant = 'red', children, onClick = () => { } }) => {
         return (
-            <button disabled={disabled} className={`button button--hug button--${variant}`}>{children}</button>
+            <button onClick={onClick} disabled={disabled} className={`button button--hug button--${variant}`}>{children}</button>
         );
     },
-    Default: ({ disabled = false, children }) => {
+    Default: ({ disabled = false, children, onClick }) => {
         return (
-            <button disabled={disabled} className={`button button--fixed button--red`}>
+            <button onClick={onClick} disabled={disabled} className={`button button--fixed button--red`}>
                 <PlusSVG className='button_icon' />
                 {children}
             </button>
         )
     },
-    Primary: ({ disabled = false, children }) => {
+    Primary: ({ disabled = false, children, onClick }) => {
         return (
-            <button disabled={disabled} className={`button button--fixed button--primary`}>
+            <button onClick={onClick} disabled={disabled} className={`button button--fixed button--primary`}>
                 <PencilSVG className='button_icon' />
                 {children}
             </button>
         )
     },
-    Secondary: ({ disabled = false, children }) => {
+    Secondary: ({ disabled = false, children, onClick }) => {
         return (
-            <button disabled={disabled} className={`button button--fixed button--secondary button--secondary-open`}>
+            <button onClick={onClick} disabled={disabled} className={`button button--fixed button--secondary button--secondary-open`}>
                 <OpenSVG className='button_icon' />
                 {children}
             </button>
         )
     },
-    SecondaryTwo: ({ disabled = false, children }) => {
+    SecondaryTwo: ({ disabled = false, children, onClick }) => {
         return (
-            <button disabled={disabled} className={`button button--fixed button--secondary`}>
+            <button onClick={onClick} disabled={disabled} className={`button button--fixed button--secondary`}>
                 <PlusSVG className='button_icon' />
                 {children}
             </button>
         )
     },
-    Tertiary: ({ disabled = false, children }) => {
+    Tertiary: ({ disabled = false, children, onClick }) => {
         return (
-            <button disabled={disabled} className={`button button--fixed button--tertiary`}>
+            <button onClick={onClick} disabled={disabled} className={`button button--fixed button--tertiary`}>
                 {children}
             </button>
         )
     },
-    Link: ({ disabled = false, children }) => {
+    Link: ({ disabled = false, children, onClick }) => {
         return (
-            <button disabled={disabled} className={`button button--fixed button--secondary button--link`}>
+            <button onClick={onClick} disabled={disabled} className={`button button--fixed button--secondary button--link`}>
                 <CopySVG className='button_icon' />
                 {children}</button>
         )
