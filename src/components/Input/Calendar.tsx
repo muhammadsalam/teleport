@@ -22,7 +22,7 @@ import {
     endOfYear,
 } from "date-fns";
 import { ru } from "date-fns/locale";
-import Button from "../Button/Button";
+import { BtnHug } from "../Button/Button";
 
 const Calendar = () => {
     const [startDate, setStartDate] = useState<Date | null>(null);
@@ -177,13 +177,13 @@ const Calendar = () => {
                                     {children}
                                 </div>
                                 <div className={styles.calendar_right__buttons}>
-                                    <Button.Hug
+                                    <BtnHug
                                         onClick={handleCancelClick}
                                         variant="secondary"
                                     >
                                         Отмена
-                                    </Button.Hug>
-                                    <Button.Hug
+                                    </BtnHug>
+                                    <BtnHug
                                         disabled={
                                             selectedDates[0] === startDate &&
                                             selectedDates[1] === endDate
@@ -191,7 +191,7 @@ const Calendar = () => {
                                         onClick={handleApplyClick}
                                     >
                                         Применить
-                                    </Button.Hug>
+                                    </BtnHug>
                                 </div>
                             </div>
                         </div>
