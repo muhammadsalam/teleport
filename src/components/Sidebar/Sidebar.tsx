@@ -66,6 +66,7 @@ export const Sidebar: FC = () => {
                 <ul className={styles.list}>
                     {tabList.map((item) => (
                         <li
+                            key={item.title}
                             className={styles.list__item}
                             onClick={() => handleActiveTabChange(item.title)}
                         >
