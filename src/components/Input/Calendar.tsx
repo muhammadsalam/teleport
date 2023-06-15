@@ -1,6 +1,3 @@
-import "react-datepicker/dist/react-datepicker.css";
-import styles from "./Input.module.sass";
-
 import { FC, forwardRef, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import { ReactComponent as ArrowLeftSVG } from "Icon/arrow-left.svg";
@@ -23,7 +20,9 @@ import {
     endOfYear,
 } from "date-fns";
 import { ru } from "date-fns/locale";
-import { BtnHug } from "../Button/Button";
+import { BtnHug } from "components";
+import "react-datepicker/dist/react-datepicker.css";
+import styles from "./Input.module.sass";
 
 export const Calendar = () => {
     const [startDate, setStartDate] = useState<Date | null>(null);
