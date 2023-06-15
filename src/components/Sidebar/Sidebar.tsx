@@ -7,15 +7,54 @@ import { ReactComponent as GearSVG } from "Icon/gear-wheel.svg";
 import { ReactComponent as ExitSVG } from "Icon/exit.svg";
 import { ReactComponent as LampSVG } from "Icon/lamp.svg";
 
-import { FC, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import styles from "./Sidebar.module.sass";
 import { combineClassNames } from "~/utils/combineClassNames";
 
 export const Sidebar: FC = () => {
     const [isSwitchActive, setIsSwitchActive] = useState<boolean>(false);
+    const [activeTab, setActiveTab] = useState<string>("Мои страницы");
 
     const handleSwitchClick: () => void = () => {
         setIsSwitchActive(!isSwitchActive);
+    };
+
+    type tabListType = {
+        icon: ReactNode;
+        title: string;
+        span?: ReactNode;
+    }[];
+
+    const tabList: tabListType = [
+        {
+            icon: <PageSVG />,
+            title: "Мои страницы",
+        },
+        {
+            icon: <CoinSVG />,
+            title: "Баланс",
+            span: <span className={styles.list__item__span}>50,00 ₽</span>,
+        },
+        {
+            icon: <NetSVG />,
+            title: "Домены",
+        },
+        {
+            icon: <PartnersSVG />,
+            title: "Партнерская программа",
+        },
+        {
+            icon: <BookSVG />,
+            title: "Обучающие материалы",
+        },
+        {
+            icon: <GearSVG />,
+            title: "Настройки",
+        },
+    ];
+
+    const handleActiveTabChange = (title: string) => {
+        setActiveTab(title);
     };
 
     return (
@@ -25,51 +64,25 @@ export const Sidebar: FC = () => {
             </div>
             <nav className={styles.nav}>
                 <ul className={styles.list}>
-                    <li className={styles.list__item}>
-                        <a className={styles.list__link} href="#">
-                            <PageSVG />
-                            Мои страницы
-                        </a>
-                    </li>
-                    <li className={styles.list__item}>
-                        <a
-                            className={combineClassNames(
-                                styles.list__link,
-                                styles.list__link_active
-                            )}
-                            href="#"
+                    {tabList.map((item) => (
+                        <li
+                            className={styles.list__item}
+                            onClick={() => handleActiveTabChange(item.title)}
                         >
-                            <CoinSVG />
-                            Баланс{" "}
-                            <span className={styles.list__item__span}>
-                                50,00 ₽
-                            </span>
-                        </a>
-                    </li>
-                    <li className={styles.list__item}>
-                        <a className={styles.list__link} href="#">
-                            <NetSVG />
-                            Домены
-                        </a>
-                    </li>
-                    <li className={styles.list__item}>
-                        <a className={styles.list__link} href="#">
-                            <PartnersSVG />
-                            Партнерская программа
-                        </a>
-                    </li>
-                    <li className={styles.list__item}>
-                        <a className={styles.list__link} href="#">
-                            <BookSVG />
-                            Обучающие материалы
-                        </a>
-                    </li>
-                    <li className={styles.list__item}>
-                        <a className={styles.list__link} href="#">
-                            <GearSVG />
-                            Настройки
-                        </a>
-                    </li>
+                            <a
+                                className={combineClassNames(
+                                    styles.list__link,
+                                    activeTab === item.title &&
+                                        styles.list__link_active
+                                )}
+                                href="#"
+                            >
+                                {item.icon}
+                                {item.title}
+                                {item.span}
+                            </a>
+                        </li>
+                    ))}
                 </ul>
             </nav>
             <div className={styles.bottom}>
