@@ -1,8 +1,8 @@
 import './Button.scss';
-import { ReactComponent as PlusSVG } from '../../assets/images/icons/plus.svg';
-import { ReactComponent as PencilSVG } from '../../assets/images/icons/pencil.svg';
-import { ReactComponent as OpenSVG } from '../../assets/images/icons/open.svg';
-import { ReactComponent as CopySVG } from '../../assets/images/icons/copy.svg';
+import { ReactComponent as PlusSVG } from 'Icon/plus.svg';
+import { ReactComponent as PencilSVG } from 'Icon/pencil.svg';
+import { ReactComponent as OpenSVG } from 'Icon/open.svg';
+import { ReactComponent as CopySVG } from 'Icon/copy.svg';
 
 export const BtnHug = ({ disabled = false, variant = 'red', children, onClick = () => { } }) => {
     return (
