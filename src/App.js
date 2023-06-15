@@ -1,9 +1,9 @@
-import { Calendar } from "Component/";
+import { Sidebar } from "Component/";
 
 function App() {
     return (
         <div className="App">
-            <Calendar />
+            <Sidebar />
         </div>
     );
 }
