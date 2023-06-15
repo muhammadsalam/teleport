@@ -93,7 +93,7 @@ export const Sidebar: FC = () => {
                             <span
                                 className={combineClassNames(
                                     styles.switcher,
-                                    styles.switcher_active
+                                    isSwitchActive && styles.switcher_active
                                 )}
                             >
                                 <span className={styles.switcher__item}></span>
