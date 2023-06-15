@@ -1,9 +1,9 @@
 import styles from "./Input.module.sass";
 
 import React, { ChangeEvent, FC, useState } from "react";
-import { ReactComponent as UnhideSVG } from "../../assets/images/icons/unhide.svg";
-import { ReactComponent as HideSVG } from "../../assets/images/icons/hide.svg";
-import { combineClassNames } from "../../utils/combineClassNames";
+import { ReactComponent as UnhideSVG } from "Icon/unhide.svg";
+import { ReactComponent as HideSVG } from "Icon/hide.svg";
+import { combineClassNames } from "Util/combineClassNames";
 
 interface InputProps {
     type: "text" | "password";
@@ -11,7 +11,11 @@ interface InputProps {
     label: string;
 }
 
-const Input: FC<InputProps> = ({ type = "text", label, placeholder }) => {
+export const Input: FC<InputProps> = ({
+    type = "text",
+    label,
+    placeholder,
+}) => {
     const [isError, setIsError] = useState<boolean>(false);
     const [inputValue, setInputValue] = useState<string>("");
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
@@ -59,5 +63,3 @@ const Input: FC<InputProps> = ({ type = "text", label, placeholder }) => {
         </label>
     );
 };
-
-export default Input;

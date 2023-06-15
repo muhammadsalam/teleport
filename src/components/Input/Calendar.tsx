@@ -1,7 +1,8 @@
-import { FC, forwardRef, useRef, useState } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./Input.module.sass";
+
+import { FC, forwardRef, useRef, useState } from "react";
+import DatePicker from "react-datepicker";
 import { ReactComponent as ArrowLeftSVG } from "Icon/arrow-left.svg";
 import { ReactComponent as ArrowRightSVG } from "Icon/arrow-right.svg";
 import { combineClassNames } from "Util/combineClassNames";
@@ -24,7 +25,7 @@ import {
 import { ru } from "date-fns/locale";
 import { BtnHug } from "../Button/Button";
 
-const Calendar = () => {
+export const Calendar = () => {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
     const [selectedDates, setSelectedDates] = useState<any>([null, null]);
@@ -250,5 +251,3 @@ const Calendar = () => {
         </div>
     );
 };
-
-export default Calendar;

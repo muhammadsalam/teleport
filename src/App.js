@@ -1,4 +1,4 @@
-import Calendar from "./components/Input/Calendar";
+import { Calendar } from "Component";
 
 function App() {
     return (

@@ -11,7 +11,11 @@ interface DropdownProps {
     options: string[];
 }
 
-const Dropdown: FC<DropdownProps> = ({ options = [], label, placeholder }) => {
+export const Dropdown: FC<DropdownProps> = ({
+    options = [],
+    label,
+    placeholder,
+}) => {
     const [dropdownValue, setDropdownValue] = useState<string>(placeholder);
     const [isMounted, setIsMounted] = useState<boolean>(false);
 
@@ -86,5 +90,3 @@ const Dropdown: FC<DropdownProps> = ({ options = [], label, placeholder }) => {
         </label>
     );
 };
-
-export default Dropdown;
