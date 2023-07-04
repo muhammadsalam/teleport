@@ -24,7 +24,9 @@ const FolderItem: FC = () => {
                 <span className={styles.folderItem_button_span}></span>
             </div>
             <FolderSVG />
-            <p className={styles.folderItem_title}>Неотсортированные</p>
+            <p className={styles.folderItem_title}>
+                Получи 15 материалов бесплатно
+            </p>
         </div>
     );
 };

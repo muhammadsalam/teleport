@@ -1,6 +1,7 @@
 @import "../../variables";
 
 .folderItem {
+    padding: 8px;
     background-color: #242a43;
     border-radius: 4px;
     position: relative;
@@ -92,6 +93,10 @@
 }
 
 .folderItem_title {
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     margin: 14px 0 0;
     font-size: 14px;
     line-height: 20px;
