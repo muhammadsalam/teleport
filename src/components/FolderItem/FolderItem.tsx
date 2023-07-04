@@ -6,7 +6,8 @@ import { FC, useState } from "react";
 const FolderItem: FC = () => {
     const [isActive, setIsActive] = useState<boolean>(false);
 
-    const handleActivating = () => !isActive && setIsActive(!isActive);
+    const handleActivating: () => void = () =>
+        !isActive && setIsActive(!isActive);
 
     return (
         <div
