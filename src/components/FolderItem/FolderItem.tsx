@@ -2,8 +2,9 @@ import { combineClassNames } from "~/utils/combineClassNames";
 import styles from "./FolderItem.module.scss";
 import { ReactComponent as FolderSVG } from "Icon/folder.svg";
 import { FC, useState } from "react";
+import { FolderItemProps } from "./FolderItem.types";
 
-const FolderItem: FC = () => {
+const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
     const [isActive, setIsActive] = useState<boolean>(false);
 
     const handleActivating: () => void = () =>
@@ -17,16 +18,14 @@ const FolderItem: FC = () => {
             )}
             onClick={handleActivating}
         >
-            <div className={styles.folderItem_count}>150</div>
+            <div className={styles.folderItem_count}>{count}</div>
             <div className={styles.folderItem_button}>
                 <span className={styles.folderItem_button_span}></span>
                 <span className={styles.folderItem_button_span}></span>
                 <span className={styles.folderItem_button_span}></span>
             </div>
             <FolderSVG />
-            <p className={styles.folderItem_title}>
-                Получи 15 материалов бесплатно
-            </p>
+            <p className={styles.folderItem_title}>{text}</p>
         </div>
     );
 };

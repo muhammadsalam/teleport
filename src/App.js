@@ -5,7 +5,7 @@ function App() {
     return (
         <div className="App">
             <Sidebar />
-            <FolderItem />
+            <FolderItem count={150} text="Получи 15 материалов бесплатно" />
         </div>
     );
 }
