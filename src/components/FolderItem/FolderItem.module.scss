@@ -1,5 +1,9 @@
 @import "../../variables";
 
+.folder {
+    position: relative;
+}
+
 .folderItem {
     padding: 8px;
     background-color: #242a43;
@@ -34,7 +38,7 @@
             color: #fff;
         }
 
-        svg {
+        .folderItem_icon {
             path:last-child {
                 fill: #fff;
             }
@@ -100,4 +104,54 @@
     margin: 14px 0 0;
     font-size: 14px;
     line-height: 20px;
+}
+
+.contextBlock {
+    position: absolute;
+    top: 52px;
+    left: calc(100% - 46px);
+    width: max-content;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: all 0.123s ease-in;
+}
+
+.contextBlock__done,
+.contextBlock__enter {
+    grid-template-rows: 1fr;
+    .context {
+        padding: 6px 0;
+    }
+}
+
+.context {
+    white-space: nowrap;
+    list-style: none;
+    background-color: #29324f;
+    text-align: left;
+    padding: 0px 0;
+    margin: 0;
+    overflow: hidden;
+    transition: padding 0.123s ease-in;
+}
+
+.context_item {
+    padding: 14px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    color: $blue-3;
+    transition: background-color 0.123s ease-in;
+
+    &:hover {
+        background-color: #294c95;
+    }
+}
+
+.context_icon {
+    margin-right: 6px;
+    vertical-align: middle;
+    path {
+        fill: #94b3e2;
+    }
 }
