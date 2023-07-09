@@ -113,7 +113,7 @@
     width: max-content;
     display: grid;
     grid-template-rows: 0fr;
-    transition: all 0.123s ease-in;
+    transition: all 0.123s ease-in, transform 0 linear;
 }
 
 .contextBlock__done,

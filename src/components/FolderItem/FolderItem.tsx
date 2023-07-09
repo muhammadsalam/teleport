@@ -3,29 +3,69 @@ import styles from "./FolderItem.module.scss";
 import { ReactComponent as PencilSVG } from "Icon/pencil.svg";
 import { ReactComponent as DeleteSVG } from "Icon/delete.svg";
 import { ReactComponent as FolderSVG } from "Icon/folder.svg";
-import { FC, useRef, useState } from "react";
-import { FolderItemProps, MenuPosition } from "./FolderItem.types";
+import { FC, MouseEvent, useEffect, useRef, useState } from "react";
+import { FolderItemProps } from "./FolderItem.types";
 import { useOutsideClick } from "~/hooks/useOutsideClick";
 import { CSSTransition } from "react-transition-group";
 
 const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isMounted, setIsMounted] = useState<boolean>(false);
-    const [menuPosition, setMenuPosition] = useState<MenuPosition>({
-        top: 0,
-        left: 0,
-    });
 
-    const handleActivating: () => void = () =>
-        !isActive && setIsActive(!isActive);
+    const contextRef = useRef<HTMLDivElement>(null);
+    const [menuPosition, setMenuPosition] = useState<{
+        left?: number;
+        top?: number;
+    }>({});
 
-    const handleContext: () => void = () => {
+    const [leftTransform, setLeftTransform] = useState<number>(0);
+
+    const handleActivating: (event: MouseEvent<HTMLDivElement>) => void = ({
+        target,
+    }) => {
+        const folderItemButton = !(target as Element).closest(
+            `.${styles.folderItem_button}`
+        );
+
+        if (folderItemButton && !isActive) {
+            setIsActive(!isActive);
+        }
+    };
+
+    useEffect(() => {
+        const rect = contextRef.current?.getBoundingClientRect();
+        setMenuPosition({
+            left: rect?.left,
+        });
+        if (rect && checkElementOutX(rect)) {
+            setLeftTransform(
+                -Math.floor(rect.left + rect.width - window.innerWidth + 5)
+            );
+            return;
+        }
+        setLeftTransform(0);
+    }, [isMounted]);
+
+    const handleContext = () => {
         setIsMounted(!isMounted);
     };
 
-    const contextRef = useRef<HTMLDivElement>(null);
+    const checkElementOutX: (elemRect: {
+        left: number;
+        width: number;
+    }) => boolean = (elemRect) => {
+        // Если положение элемента слева + ширина > ширины окна
+        if (elemRect.left + elemRect.width > window.innerWidth) return true;
+        return false;
+    };
 
-    useOutsideClick(contextRef, handleContext);
+    useOutsideClick(
+        contextRef,
+        () => {
+            setIsMounted(false);
+        },
+        styles.folderItem_button
+    );
 
     return (
         <div className={styles.folder}>
@@ -58,7 +98,13 @@ const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
                 }}
                 unmountOnExit
             >
-                <div className={styles.contextBlock} ref={contextRef}>
+                <div
+                    style={{
+                        transform: `translateX(${leftTransform}px)`,
+                    }}
+                    className={styles.contextBlock}
+                    ref={contextRef}
+                >
                     <ul className={styles.context}>
                         <li className={styles.context_item}>
                             <PencilSVG className={styles.context_icon} />{" "}
