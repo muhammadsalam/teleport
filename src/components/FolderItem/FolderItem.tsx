@@ -13,10 +13,6 @@ const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
     const [isMounted, setIsMounted] = useState<boolean>(false);
 
     const contextRef = useRef<HTMLDivElement>(null);
-    const [menuPosition, setMenuPosition] = useState<{
-        left?: number;
-        top?: number;
-    }>({});
 
     const [leftTransform, setLeftTransform] = useState<number>(0);
 
@@ -34,15 +30,20 @@ const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
 
     useEffect(() => {
         const rect = contextRef.current?.getBoundingClientRect();
-        setMenuPosition({
-            left: rect?.left,
-        });
+        console.log(rect?.left, rect?.width);
+
         if (rect && checkElementOutX(rect)) {
             setLeftTransform(
                 -Math.floor(rect.left + rect.width - window.innerWidth + 5)
             );
+            console.log(checkElementOutX(rect) && "rect есть и true");
             return;
         }
+        if (rect)
+            console.log(
+                checkElementOutX(rect) && "тут тоже есть _rect_ и true"
+            );
+
         setLeftTransform(0);
     }, [isMounted]);
 
@@ -55,6 +56,11 @@ const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
         width: number;
     }) => boolean = (elemRect) => {
         // Если положение элемента слева + ширина > ширины окна
+        console.log(
+            "left + width > window",
+            elemRect.left + elemRect.width,
+            window.innerWidth
+        );
         if (elemRect.left + elemRect.width > window.innerWidth) return true;
         return false;
     };
