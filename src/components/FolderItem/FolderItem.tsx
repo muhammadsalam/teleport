@@ -7,6 +7,7 @@ import { FC, MouseEvent, useEffect, useRef, useState } from "react";
 import { FolderItemProps } from "./FolderItem.types";
 import { useOutsideClick } from "~/hooks/useOutsideClick";
 import { CSSTransition } from "react-transition-group";
+import EditPopup from "Component/Popup/EditPopup";
 
 const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
     const [isActive, setIsActive] = useState<boolean>(false);

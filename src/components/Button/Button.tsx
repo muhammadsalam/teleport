@@ -13,6 +13,7 @@ interface ButtonProps {
 
 interface ButtonHugProps extends ButtonProps {
     variant?: "red" | "secondary";
+    grow?: boolean;
 }
 
 export const BtnHug: FC<ButtonHugProps> = ({
@@ -20,12 +21,15 @@ export const BtnHug: FC<ButtonHugProps> = ({
     variant = "red",
     children,
     onClick = () => {},
+    grow = false,
 }) => {
     return (
         <button
             onClick={onClick}
             disabled={disabled}
-            className={`button button--hug button--${variant}`}
+            className={`button button--hug button--${variant} ${
+                grow ? "button--grow" : ""
+            }`}
         >
             {children}
         </button>
