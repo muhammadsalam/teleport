@@ -1,11 +1,11 @@
 import { FC, useState } from "react";
 import style from "./EditPopup.module.scss";
-import Popup from "./Popup";
-import { BtnHug } from "../Button/Button";
-import { PopupProps } from "./Popup.types";
-import { Input } from "../Input/Input";
+import Popup from "../Popup";
+import { BtnHug } from "../../Button/Button";
+import { PopupProps } from "../Popup.types";
+import { Input } from "../../Input/Input";
 
-const EditPopup: FC<PopupProps> = ({ isActive, setIsActive, agree }) => {
+export const EditPopup: FC<PopupProps> = ({ isActive, setIsActive, agree }) => {
     return isActive ? (
         <Popup setActive={setIsActive}>
             <div className={style.title}>Переименовать папку</div>
@@ -33,5 +33,3 @@ const EditPopup: FC<PopupProps> = ({ isActive, setIsActive, agree }) => {
         <></>
     );
 };
-
-export default EditPopup;

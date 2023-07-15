@@ -1,6 +1,5 @@
 import { Sidebar } from "Component/";
 import FolderItem from "./components/FolderItem/FolderItem";
-import EditPopup from "./components/Popup/EditPopup";
 
 function App() {
     return (
