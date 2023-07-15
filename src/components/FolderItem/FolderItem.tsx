@@ -140,7 +140,13 @@ const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
                     </ul>
                 </div>
             </CSSTransition>
-            {/* {isEditing && <EditPopup agree={() => {}} cancel={() => {}} />} */}
+            {isEditing && (
+                <EditPopup
+                    isActive={isEditing}
+                    setIsActive={setIsEditing}
+                    agree={() => {}}
+                />
+            )}
             {isDeleting && (
                 <DeletePopup
                     isActive={isDeleting}

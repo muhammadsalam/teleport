@@ -5,12 +5,9 @@ import { BtnHug } from "../Button/Button";
 import { PopupProps } from "./Popup.types";
 import { Input } from "../Input/Input";
 
-const EditPopup: FC<PopupProps> = ({ cancel, agree }) => {
-    const [isEditingPopupActive, setIsEditingPopupActive] =
-        useState<boolean>(true);
-
-    return isEditingPopupActive ? (
-        <Popup setActive={setIsEditingPopupActive}>
+const EditPopup: FC<PopupProps> = ({ isActive, setIsActive, agree }) => {
+    return isActive ? (
+        <Popup setActive={setIsActive}>
             <div className={style.title}>Переименовать папку</div>
             <Input
                 type="text"
@@ -18,7 +15,13 @@ const EditPopup: FC<PopupProps> = ({ cancel, agree }) => {
                 label="Название папки"
             />
             <div className={style.buttons}>
-                <BtnHug grow variant="secondary" onClick={cancel}>
+                <BtnHug
+                    grow
+                    variant="secondary"
+                    onClick={() => {
+                        setIsActive(false);
+                    }}
+                >
                     Отмена
                 </BtnHug>
                 <BtnHug grow onClick={agree}>
