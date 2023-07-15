@@ -8,6 +8,7 @@ import { FolderItemProps } from "./FolderItem.types";
 import { useOutsideClick } from "~/hooks/useOutsideClick";
 import { CSSTransition } from "react-transition-group";
 import EditPopup from "Component/Popup/EditPopup";
+import DeletePopup from "../Popup/DeletePopup";
 
 const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
     const [isActive, setIsActive] = useState<boolean>(false);
@@ -124,6 +125,7 @@ const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
                     </ul>
                 </div>
             </CSSTransition>
+            <DeletePopup agree={() => {}} cancel={() => {}} />
         </div>
     );
 };
