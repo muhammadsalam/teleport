@@ -14,6 +14,9 @@ const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isMounted, setIsMounted] = useState<boolean>(false);
 
+    const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [isDeleting, setIsDeleting] = useState<boolean>(false);
+
     const contextRef = useRef<HTMLDivElement>(null);
 
     const [leftTransform, setLeftTransform] = useState<number>(0);
@@ -114,18 +117,37 @@ const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
                     ref={contextRef}
                 >
                     <ul className={styles.context}>
-                        <li className={styles.context_item}>
-                            <PencilSVG className={styles.context_icon} />{" "}
+                        <li
+                            className={styles.context_item}
+                            onClick={() => {
+                                handleContext();
+                                setIsEditing(true);
+                            }}
+                        >
+                            <PencilSVG className={styles.context_icon} />
                             Редактировать папку
                         </li>
-                        <li className={styles.context_item}>
+                        <li
+                            className={styles.context_item}
+                            onClick={() => {
+                                handleContext();
+                                setIsDeleting(true);
+                            }}
+                        >
                             <DeleteSVG className={styles.context_icon} />{" "}
                             Удалить папку
                         </li>
                     </ul>
                 </div>
             </CSSTransition>
-            <DeletePopup agree={() => {}} cancel={() => {}} />
+            {/* {isEditing && <EditPopup agree={() => {}} cancel={() => {}} />} */}
+            {isDeleting && (
+                <DeletePopup
+                    isActive={isDeleting}
+                    setIsActive={setIsDeleting}
+                    agree={() => {}}
+                />
+            )}
         </div>
     );
 };
