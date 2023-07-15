@@ -1,11 +1,15 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import style from "./DeletePopup.module.scss";
-import Popup from "./Popup";
-import { BtnHug } from "../Button/Button";
-import { PopupProps } from "./Popup.types";
+import Popup from "../Popup";
+import { BtnHug } from "../../Button/Button";
+import { PopupProps } from "../Popup.types";
 import { ReactComponent as TrashIcon } from "Icon/trash.svg";
 
-const DeletePopup: FC<PopupProps> = ({ isActive, setIsActive, agree }) => {
+export const DeletePopup: FC<PopupProps> = ({
+    isActive,
+    setIsActive,
+    agree,
+}) => {
     return isActive ? (
         <Popup setActive={setIsActive}>
             <TrashIcon style={{ display: "block", margin: "0 auto" }} />
@@ -29,5 +33,3 @@ const DeletePopup: FC<PopupProps> = ({ isActive, setIsActive, agree }) => {
         <></>
     );
 };
-
-export default DeletePopup;
