@@ -1,0 +1,53 @@
+@import "../../../variables.sass";
+
+.select {
+    position: relative;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.selected {
+    svg {
+        transition: transform 0.123s ease-in;
+    }
+}
+
+.selected_text {
+    font-size: 14px;
+}
+
+.selected__opened svg {
+    transform: rotate(180deg);
+}
+
+.menu {
+    background-color: $blue-4;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    border-radius: 4px;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: all 0.2s ease-in-out;
+    min-width: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.123s ease-in, transform;
+    overflow: hidden;
+}
+
+.menu__enter_active,
+.menu__enter_done {
+    grid-template-rows: 1fr;
+}
+
+.list {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.listItem {
+    font-size: 14px;
+}
