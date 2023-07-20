@@ -23,7 +23,7 @@ export const SelectLang: FC = () => {
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     function handleMount() {
-        setIsMounted(!isMounted);
+        setIsMounted((state) => !state);
     }
 
     function handleItemClick(option: langFlagKey) {
