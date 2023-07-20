@@ -6,8 +6,18 @@ import { FC, useRef, useState } from "react";
 import { combineClassNames } from "~/utils/combineClassNames";
 import { CSSTransition } from "react-transition-group";
 
+import { ReactComponent as RuFlag } from "../assets/countries/ru.svg";
+
+type langFlagKey = "en" | "ru" | "uk";
+
+type langFlag = {
+    [key in langFlagKey]: JSX.Element;
+};
+
+const langs: langFlag = { ru: <RuFlag />, en: <RuFlag />, uk: <RuFlag /> };
+
 export const SelectLang: FC = () => {
-    const [value, setValue] = useState<string>("ru");
+    const [value, setValue] = useState<langFlagKey>("ru");
     const [isMounted, setIsMounted] = useState<boolean>(false);
 
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -16,7 +26,7 @@ export const SelectLang: FC = () => {
         setIsMounted(!isMounted);
     }
 
-    function handleItemClick(option: string) {
+    function handleItemClick(option: langFlagKey) {
         setValue(option);
     }
 
@@ -31,12 +41,9 @@ export const SelectLang: FC = () => {
                 )}
                 onClick={handleMount}
             >
-                <img
-                    className={style.selected_icon}
-                    src={require(`../assets/countries/${value}.svg`)}
-                />
+                {langs[value]}
                 <span className={style.selected_text}>{value}</span>
-                <ArrowDown />
+                <ArrowDown className={style.selected_arrow} />
             </div>
 
             <CSSTransition
@@ -51,13 +58,25 @@ export const SelectLang: FC = () => {
             >
                 <div className={style.menu} ref={dropdownRef}>
                     <ul className={style.list}>
-                        <li className={style.listItem}>
-                            <img
-                                className={style.listItem_icon}
-                                src={require(`../assets/countries/${value}.svg`)}
-                            />
-                            <span className={style.listItem_text}>RU</span>
-                        </li>
+                        {Object.keys(langs).map(
+                            (language) =>
+                                language !== value && (
+                                    <li
+                                        key={language}
+                                        className={style.listItem}
+                                        onClick={() =>
+                                            handleItemClick(
+                                                language as langFlagKey
+                                            )
+                                        }
+                                    >
+                                        {langs[language as langFlagKey]}
+                                        <span className={style.listItem_text}>
+                                            {language}
+                                        </span>
+                                    </li>
+                                )
+                        )}
                     </ul>
                 </div>
             </CSSTransition>
