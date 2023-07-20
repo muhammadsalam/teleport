@@ -1,11 +1,9 @@
-import { Sidebar } from "Component/";
-import FolderItem from "./components/FolderItem/FolderItem";
+import { Header } from "./components/Header";
 
 function App() {
     return (
         <div className="App">
-            <Sidebar />
-            <FolderItem count={150} text="Получи 15 материалов бесплатно" />
+            <Header />
         </div>
     );
 }
