@@ -30,7 +30,7 @@ export const SelectLang: FC = () => {
         setValue(option);
     }
 
-    useOutsideClick(dropdownRef, handleMount, style.select);
+    useOutsideClick(dropdownRef, () => setIsMounted(false), style.select);
 
     return (
         <div className={style.select}>
@@ -64,11 +64,12 @@ export const SelectLang: FC = () => {
                                     <li
                                         key={language}
                                         className={style.listItem}
-                                        onClick={() =>
+                                        onClick={() => {
                                             handleItemClick(
                                                 language as langFlagKey
-                                            )
-                                        }
+                                            );
+                                            setIsMounted((state) => !state);
+                                        }}
                                     >
                                         {langs[language as langFlagKey]}
                                         <span className={style.listItem_text}>
