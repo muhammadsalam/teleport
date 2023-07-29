@@ -1,9 +1,18 @@
+import { Sidebar } from "./components";
+import FolderItem from "./components/FolderItem/FolderItem";
 import { Header } from "./components/Header";
 
 function App() {
     return (
         <div className="App">
-            <Header />
+            <div className="grid-block">
+                <Sidebar />
+                <Header />
+                <div className="main">
+                    <FolderItem text="TEXT" count={12} />
+                </div>
+
+            </div>
         </div>
     );
 }
