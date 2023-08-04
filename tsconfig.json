@@ -29,5 +29,5 @@
       }
   
     },
-    "include": ["src", "src/@types", "**/*.module.scss", "*.module.scss", "**/*.module.sass", "*.module.sass"]
+    "include": ["src", "src/app/@types", "**/*.module.scss", "*.module.scss", "**/*.module.sass", "*.module.sass"]
 }
