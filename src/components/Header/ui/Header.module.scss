@@ -1,5 +1,3 @@
-@import "../../../variables.sass";
-
 .header {
     width: 100%;
     padding: 8px 30px;
@@ -16,7 +14,7 @@
     bottom: 0;
     width: 100%;
     height: 1px;
-    background: $gradient;
+    background: var(--gradient);
     position: absolute;
     opacity: 0.5;
 }

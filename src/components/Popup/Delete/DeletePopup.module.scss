@@ -1,8 +1,6 @@
-@import "../../../variables.sass";
-
 .title {
     text-align: center;
-    color: $blue-3;
+    color: var(--blue-3);
     font-size: 20px;
     line-height: 120%;
     margin-top: 10px;
@@ -13,7 +11,7 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 28px;
-    color: $gray;
+    color: var(--gray);
     text-align: center;
     margin: 0;
 }
