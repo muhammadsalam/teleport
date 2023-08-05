@@ -9,7 +9,7 @@ import { ReactComponent as LampSVG } from "Icon/lamp.svg";
 
 import { FC, ReactNode, useState } from "react";
 import styles from "./Sidebar.module.sass";
-import { combineClassNames } from "~/utils/combineClassNames";
+import { ccn } from "~/shared/lib/combine-class-names";
 
 export const Sidebar: FC = () => {
     const [isSwitchActive, setIsSwitchActive] = useState<boolean>(false);
@@ -71,7 +71,7 @@ export const Sidebar: FC = () => {
                             onClick={() => handleActiveTabChange(item.title)}
                         >
                             <a
-                                className={combineClassNames(
+                                className={ccn(
                                     styles.list__link,
                                     activeTab === item.title &&
                                         styles.list__link_active
@@ -95,7 +95,7 @@ export const Sidebar: FC = () => {
                         </a>
                     </li>
                     <li
-                        className={combineClassNames(
+                        className={ccn(
                             styles.list__item,
                             isSwitchActive && styles.list__item_active
                         )}
@@ -105,7 +105,7 @@ export const Sidebar: FC = () => {
                             <LampSVG />
                             Светлая тема
                             <span
-                                className={combineClassNames(
+                                className={ccn(
                                     styles.switcher,
                                     isSwitchActive && styles.switcher_active
                                 )}
