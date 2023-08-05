@@ -1,9 +1,9 @@
 import style from "./SelectLang.module.scss";
 import { ReactComponent as ArrowDown } from "../assets/common/arrow-bottom.svg";
 
-import { useOutsideClick } from "~/hooks/useOutsideClick";
+import { useOutsideClick } from "~/shared/lib/use-outside-click";
 import { FC, useRef, useState } from "react";
-import { combineClassNames } from "~/utils/combineClassNames";
+import { ccn } from "~/shared/lib/combine-class-names";
 import { CSSTransition } from "react-transition-group";
 
 import { ReactComponent as RuFlag } from "../assets/countries/ru.svg";
@@ -35,7 +35,7 @@ export const SelectLang: FC = () => {
     return (
         <div className={style.select}>
             <div
-                className={combineClassNames(
+                className={ccn(
                     style.selected,
                     isMounted && style.selected__opened
                 )}
