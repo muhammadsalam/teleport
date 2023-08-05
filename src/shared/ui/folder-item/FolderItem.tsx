@@ -1,15 +1,15 @@
-import { combineClassNames } from "~/utils/combineClassNames";
+import { ccn } from "~/shared/lib/combine-class-names";
 import styles from "./FolderItem.module.scss";
 import { ReactComponent as PencilSVG } from "Icon/pencil.svg";
 import { ReactComponent as DeleteSVG } from "Icon/delete.svg";
 import { ReactComponent as FolderSVG } from "Icon/folder.svg";
 import { FC, MouseEvent, useEffect, useRef, useState } from "react";
 import { FolderItemProps } from "./FolderItem.types";
-import { useOutsideClick } from "~/hooks/useOutsideClick";
+import { useOutsideClick } from "~/shared/lib/use-outside-click";
 import { CSSTransition } from "react-transition-group";
 import { DeletePopup, EditPopup } from "components";
 
-const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
+export const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isMounted, setIsMounted] = useState<boolean>(false);
 
@@ -80,10 +80,7 @@ const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
     return (
         <div className={styles.folder}>
             <div
-                className={combineClassNames(
-                    styles.folderItem,
-                    isActive && styles.active
-                )}
+                className={ccn(styles.folderItem, isActive && styles.active)}
                 onClick={handleActivating}
             >
                 <div className={styles.folderItem_count}>{count}</div>
@@ -156,5 +153,3 @@ const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
         </div>
     );
 };
-
-export default FolderItem;
