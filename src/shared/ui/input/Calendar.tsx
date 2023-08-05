@@ -2,7 +2,7 @@ import { FC, forwardRef, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import { ReactComponent as ArrowLeftSVG } from "Icon/arrow-left.svg";
 import { ReactComponent as ArrowRightSVG } from "Icon/arrow-right.svg";
-import { combineClassNames } from "Util/combineClassNames";
+import { ccn } from "~/shared/lib/combine-class-names";
 import {
     addDays,
     startOfWeek,
@@ -94,7 +94,7 @@ export const Calendar = () => {
             <ul className={styles.leftList}>
                 {leftArray.map((item) => (
                     <li
-                        className={combineClassNames(
+                        className={ccn(
                             styles.left__item,
                             activeTab.title === item.title &&
                                 styles.left__item_active
@@ -166,7 +166,7 @@ export const Calendar = () => {
                 calendarContainer={({ children }) => {
                     return (
                         <div
-                            className={combineClassNames(
+                            className={ccn(
                                 styles.datepicker__calendar,
                                 "react-datepicker"
                             )}
@@ -207,7 +207,7 @@ export const Calendar = () => {
                     <div className={styles.datepicker__header}>
                         <button
                             aria-label="Previous Month"
-                            className={combineClassNames(
+                            className={ccn(
                                 styles.datepicker__navigation,
                                 styles.datepicker__navigation_previous
                             )}
@@ -230,7 +230,7 @@ export const Calendar = () => {
                         </span>
                         <button
                             aria-label="Next Month"
-                            className={combineClassNames(
+                            className={ccn(
                                 styles.datepicker__navigation,
                                 styles.datepicker__navigation_next
                             )}

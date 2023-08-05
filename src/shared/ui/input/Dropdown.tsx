@@ -1,8 +1,8 @@
 import { ReactComponent as ArrowBottom } from "Icon/arrow-bottom.svg";
-import { combineClassNames } from "Util/combineClassNames";
+import { ccn } from "~/shared/lib/combine-class-names";
 import { FC, Fragment, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
-import { useOutsideClick } from "Hook/useOutsideClick";
+import { useOutsideClick } from "~/shared/lib/use-outside-click";
 import styles from "./Input.module.sass";
 
 interface DropdownProps {
@@ -36,7 +36,7 @@ export const Dropdown: FC<DropdownProps> = ({
             <span className={styles.input_title}>{label}</span>
             <div className={styles.input_container}>
                 <button
-                    className={combineClassNames(
+                    className={ccn(
                         styles.dropdown_button,
                         styles.input_field,
                         isMounted && styles.dropdown_button__opened

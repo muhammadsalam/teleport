@@ -3,7 +3,7 @@ import styles from "./Input.module.sass";
 import React, { ChangeEvent, FC, useState } from "react";
 import { ReactComponent as UnhideSVG } from "Icon/unhide.svg";
 import { ReactComponent as HideSVG } from "Icon/hide.svg";
-import { combineClassNames } from "Util/combineClassNames";
+import { ccn } from "~/shared/lib/combine-class-names";
 
 interface InputProps {
     type: "text" | "password";
@@ -39,7 +39,7 @@ export const Input: FC<InputProps> = ({
             <span className={styles.input_title}>{label}</span>
             <div className={styles.input_container}>
                 <input
-                    className={combineClassNames(
+                    className={ccn(
                         styles.input_field,
                         isError && styles.input_field__error
                     )}
