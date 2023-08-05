@@ -1,7 +1,7 @@
 import style from "./Popup.module.scss";
 import { FC, ReactNode, useRef } from "react";
 import { ReactComponent as CloseSVG } from "Icon/close.svg";
-import { useOutsideClick } from "~/hooks/useOutsideClick";
+import { useOutsideClick } from "~/shared/lib/use-outside-click";
 
 const Popup: FC<{
     setActive: (value: boolean) => void;
