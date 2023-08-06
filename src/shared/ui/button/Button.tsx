@@ -1,8 +1,5 @@
+import { Icon } from "shared/ui";
 import "./Button.scss";
-import { ReactComponent as PlusSVG } from "Icon/plus.svg";
-import { ReactComponent as PencilSVG } from "Icon/pencil.svg";
-import { ReactComponent as OpenSVG } from "Icon/open.svg";
-import { ReactComponent as CopySVG } from "Icon/copy.svg";
 import { FC } from "react";
 
 interface ButtonProps {
@@ -47,7 +44,7 @@ export const BtnDefault: FC<ButtonProps> = ({
             disabled={disabled}
             className={`button button--fixed button--red`}
         >
-            <PlusSVG className="button_icon" />
+            <Icon name="plus" className="button_icon" />
             {children}
         </button>
     );
@@ -64,7 +61,7 @@ export const BtnPrimary: FC<ButtonProps> = ({
             disabled={disabled}
             className={`button button--fixed button--primary`}
         >
-            <PencilSVG className="button_icon" />
+            <Icon name="pencil" className="button_icon" />
             {children}
         </button>
     );
@@ -81,7 +78,7 @@ export const BtnSecondary: FC<ButtonProps> = ({
             disabled={disabled}
             className={`button button--fixed button--secondary button--secondary-open`}
         >
-            <OpenSVG className="button_icon" />
+            <Icon name="open" className="button_icon" />
             {children}
         </button>
     );
@@ -98,7 +95,7 @@ export const BtnSecondaryTwo: FC<ButtonProps> = ({
             disabled={disabled}
             className={`button button--fixed button--secondary`}
         >
-            <PlusSVG className="button_icon" />
+            <Icon name="plus" className="button_icon" />
             {children}
         </button>
     );
@@ -131,7 +128,7 @@ export const BtnLink: FC<ButtonProps> = ({
             disabled={disabled}
             className={`button button--fixed button--secondary button--link`}
         >
-            <CopySVG className="button_icon" />
+            <Icon name="copy" className="button_icon" />
             {children}
         </button>
     );

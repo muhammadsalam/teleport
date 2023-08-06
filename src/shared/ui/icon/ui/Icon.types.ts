@@ -1,3 +1,5 @@
+import { CSSProperties, HTMLAttributes, MouseEventHandler } from "react";
+
 export const icon_names = ['arrow-bottom'
     , 'arrow-left'
     , 'arrow-right'
@@ -21,6 +23,9 @@ export const icon_names = ['arrow-bottom'
     , 'trash'
     , 'unhide'] as const;
 
-export interface icon_type {
-    name: typeof icon_names[number]
+export interface iconProps extends HTMLAttributes<HTMLDivElement> {
+    name: typeof icon_names[number];
+    className?: string;
+    style?: CSSProperties;
+    onClick?: MouseEventHandler<HTMLDivElement>;
 }

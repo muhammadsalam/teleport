@@ -1,9 +1,7 @@
+import { ccn } from "shared/lib";
+import { Icon } from "shared/ui";
 import styles from "./Input.module.sass";
-
 import React, { ChangeEvent, FC, useState } from "react";
-import { ReactComponent as UnhideSVG } from "Icon/unhide.svg";
-import { ReactComponent as HideSVG } from "Icon/hide.svg";
-import { ccn } from "~/shared/lib/combine-class-names";
 
 interface InputProps {
     type: "text" | "password";
@@ -53,7 +51,11 @@ export const Input: FC<InputProps> = ({
                         className={styles.input_button}
                         onClick={togglePasswordVisibility}
                     >
-                        {isPasswordVisible ? <UnhideSVG /> : <HideSVG />}
+                        {isPasswordVisible ? (
+                            <Icon name="unhide" />
+                        ) : (
+                            <Icon name="hide" />
+                        )}
                     </button>
                 )}
             </div>

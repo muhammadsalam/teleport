@@ -1,13 +1,11 @@
-import { ccn } from "~/shared/lib/combine-class-names";
 import styles from "./FolderItem.module.scss";
-import { ReactComponent as PencilSVG } from "Icon/pencil.svg";
-import { ReactComponent as DeleteSVG } from "Icon/delete.svg";
-import { ReactComponent as FolderSVG } from "Icon/folder.svg";
 import { FC, MouseEvent, useEffect, useRef, useState } from "react";
 import { FolderItemProps } from "./FolderItem.types";
-import { useOutsideClick } from "~/shared/lib/use-outside-click";
+import { ccn, useOutsideClick } from "shared/lib";
 import { CSSTransition } from "react-transition-group";
-import { DeletePopup, EditPopup } from "components";
+import { DeletePopup } from "entities/delete-popup";
+import { EditPopup } from "entities/edit-popup";
+import { Icon } from "shared/ui";
 
 export const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
     const [isActive, setIsActive] = useState<boolean>(false);
@@ -92,7 +90,7 @@ export const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
                     <span className={styles.folderItem_button_span}></span>
                     <span className={styles.folderItem_button_span}></span>
                 </div>
-                <FolderSVG className={styles.folderItem_icon} />
+                <Icon name="folder" className={styles.folderItem_icon} />
                 <p className={styles.folderItem_title}>{text}</p>
             </div>
             <CSSTransition
@@ -120,7 +118,10 @@ export const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
                                 setIsEditing(true);
                             }}
                         >
-                            <PencilSVG className={styles.context_icon} />
+                            <Icon
+                                name="pencil"
+                                className={styles.context_icon}
+                            />
                             Редактировать папку
                         </li>
                         <li
@@ -130,7 +131,10 @@ export const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
                                 setIsDeleting(true);
                             }}
                         >
-                            <DeleteSVG className={styles.context_icon} />{" "}
+                            <Icon
+                                name="delete"
+                                className={styles.context_icon}
+                            />
                             Удалить папку
                         </li>
                     </ul>

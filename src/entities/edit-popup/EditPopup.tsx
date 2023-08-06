@@ -1,9 +1,6 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import style from "./EditPopup.module.scss";
-import Popup from "../Popup";
-import { BtnHug } from "../../Button/Button";
-import { PopupProps } from "../Popup.types";
-import { Input } from "../../Input/Input";
+import { BtnHug, Input, Popup, PopupProps } from "shared/ui";
 
 export const EditPopup: FC<PopupProps> = ({ isActive, setIsActive, agree }) => {
     return isActive ? (

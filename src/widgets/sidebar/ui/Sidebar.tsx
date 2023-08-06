@@ -1,15 +1,7 @@
-import { ReactComponent as PageSVG } from "Icon/page.svg";
-import { ReactComponent as CoinSVG } from "Icon/coin.svg";
-import { ReactComponent as NetSVG } from "Icon/net.svg";
-import { ReactComponent as PartnersSVG } from "Icon/partners.svg";
-import { ReactComponent as BookSVG } from "Icon/book.svg";
-import { ReactComponent as GearSVG } from "Icon/gear-wheel.svg";
-import { ReactComponent as ExitSVG } from "Icon/exit.svg";
-import { ReactComponent as LampSVG } from "Icon/lamp.svg";
-
 import { FC, ReactNode, useState } from "react";
 import styles from "./Sidebar.module.sass";
-import { ccn } from "~/shared/lib/combine-class-names";
+import { Icon } from "shared/ui";
+import { ccn } from "shared/lib";
 
 export const Sidebar: FC = () => {
     const [isSwitchActive, setIsSwitchActive] = useState<boolean>(false);
@@ -27,28 +19,28 @@ export const Sidebar: FC = () => {
 
     const tabList: tabListType = [
         {
-            icon: <PageSVG />,
+            icon: <Icon name="page" />,
             title: "Мои страницы",
         },
         {
-            icon: <CoinSVG />,
+            icon: <Icon name="coin" />,
             title: "Баланс",
             span: <span className={styles.list__item__span}>50,00 ₽</span>,
         },
         {
-            icon: <NetSVG />,
+            icon: <Icon name="net" />,
             title: "Домены",
         },
         {
-            icon: <PartnersSVG />,
+            icon: <Icon name="partners" />,
             title: "Партнерская программа",
         },
         {
-            icon: <BookSVG />,
+            icon: <Icon name="book" />,
             title: "Обучающие материалы",
         },
         {
-            icon: <GearSVG />,
+            icon: <Icon name="gear-wheel" />,
             title: "Настройки",
         },
     ];
@@ -90,7 +82,7 @@ export const Sidebar: FC = () => {
                 <ul className={styles.list}>
                     <li className={styles.list__item}>
                         <a className={styles.list__link} href="#">
-                            <ExitSVG />
+                            <Icon name="exit" />
                             Выход
                         </a>
                     </li>
@@ -102,7 +94,7 @@ export const Sidebar: FC = () => {
                         onClick={handleSwitchClick}
                     >
                         <a className={styles.list__link} href="#">
-                            <LampSVG />
+                            <Icon name="lamp" />
                             Светлая тема
                             <span
                                 className={ccn(

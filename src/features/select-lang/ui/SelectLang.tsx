@@ -1,12 +1,10 @@
 import style from "./SelectLang.module.scss";
-import { ReactComponent as ArrowDown } from "../assets/common/arrow-bottom.svg";
-
-import { useOutsideClick } from "~/shared/lib/use-outside-click";
 import { FC, useRef, useState } from "react";
-import { ccn } from "~/shared/lib/combine-class-names";
 import { CSSTransition } from "react-transition-group";
 
 import { ReactComponent as RuFlag } from "../assets/countries/ru.svg";
+import { ccn, useOutsideClick } from "shared/lib";
+import { Icon } from "shared/ui";
 
 type langFlagKey = "en" | "ru" | "uk";
 
@@ -43,7 +41,7 @@ export const SelectLang: FC = () => {
             >
                 {langs[value]}
                 <span className={style.selected_text}>{value}</span>
-                <ArrowDown className={style.selected_arrow} />
+                <Icon name="arrow-bottom" className={style.selected_arrow} />
             </div>
 
             <CSSTransition

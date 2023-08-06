@@ -1,9 +1,9 @@
 import style from "./Popup.module.scss";
 import { FC, ReactNode, useRef } from "react";
-import { ReactComponent as CloseSVG } from "Icon/close.svg";
-import { useOutsideClick } from "~/shared/lib/use-outside-click";
+import { useOutsideClick } from "shared/lib";
+import { Icon } from "shared/ui";
 
-const Popup: FC<{
+export const Popup: FC<{
     setActive: (value: boolean) => void;
     children: ReactNode;
 }> = ({ setActive, children }) => {
@@ -18,11 +18,13 @@ const Popup: FC<{
     return (
         <div className={style.popup}>
             <div className={style.container} ref={popupRef}>
-                <CloseSVG className={style.close} onClick={handleClose} />
+                <Icon
+                    name="close"
+                    className={style.close}
+                    onClick={handleClose}
+                />
                 {children}
             </div>
         </div>
     );
 };
-
-export default Popup;

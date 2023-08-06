@@ -1,6 +1,6 @@
-import { Sidebar } from "components";
-import FolderItem from "components/FolderItem/FolderItem";
-import { Header } from "components/Header";
+import { FolderItem } from "entities/folder-item";
+import { Header } from "widgets/header";
+import { Sidebar } from "widgets/sidebar";
 
 function App() {
     return (

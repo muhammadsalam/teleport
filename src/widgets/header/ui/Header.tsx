@@ -1,4 +1,4 @@
-import { SelectLang } from "components";
+import { SelectLang } from "features/select-lang";
 import style from "./Header.module.scss";
 import { FC } from "react";
 
@@ -9,7 +9,7 @@ export const Header: FC = () => {
             <div className={style.header_name}>Александр Нистеренко</div>
             <img
                 className={style.header_img}
-                src={require("../../../assets/images/avatars/1.jpg")}
+                src={require("../assets/avatars/1.jpg")}
                 alt="Alexander Nistenko"
             />
         </header>

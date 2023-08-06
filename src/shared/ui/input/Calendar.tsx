@@ -1,8 +1,5 @@
 import { FC, forwardRef, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
-import { ReactComponent as ArrowLeftSVG } from "Icon/arrow-left.svg";
-import { ReactComponent as ArrowRightSVG } from "Icon/arrow-right.svg";
-import { ccn } from "~/shared/lib/combine-class-names";
 import {
     addDays,
     startOfWeek,
@@ -20,9 +17,10 @@ import {
     endOfYear,
 } from "date-fns";
 import { ru } from "date-fns/locale";
-import { BtnHug } from "components";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./Input.module.sass";
+import { ccn } from "shared/lib";
+import { BtnHug, Icon } from "shared/ui";
 
 export const Calendar = () => {
     const [startDate, setStartDate] = useState<Date | null>(null);
@@ -218,7 +216,7 @@ export const Calendar = () => {
                             }
                             onClick={decreaseMonth}
                         >
-                            <ArrowLeftSVG />
+                            <Icon name="arrow-left" />
                         </button>
                         <span className={styles.datepicker__month}>
                             {monthDate
@@ -241,7 +239,7 @@ export const Calendar = () => {
                             }
                             onClick={increaseMonth}
                         >
-                            <ArrowRightSVG />
+                            <Icon name="arrow-right" />
                         </button>
                     </div>
                 )}

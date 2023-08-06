@@ -1,9 +1,8 @@
-import { ReactComponent as ArrowBottom } from "Icon/arrow-bottom.svg";
-import { ccn } from "~/shared/lib/combine-class-names";
 import { FC, Fragment, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
-import { useOutsideClick } from "~/shared/lib/use-outside-click";
 import styles from "./Input.module.sass";
+import { Icon } from "shared/ui";
+import { ccn, useOutsideClick } from "shared/lib";
 
 interface DropdownProps {
     placeholder: string;
@@ -52,7 +51,7 @@ export const Dropdown: FC<DropdownProps> = ({
                     >
                         {dropdownValue}
                     </span>
-                    <ArrowBottom />
+                    <Icon name="arrow-bottom" />
                 </button>
 
                 <CSSTransition

@@ -1,9 +1,6 @@
 import { FC } from "react";
 import style from "./DeletePopup.module.scss";
-import Popup from "../Popup";
-import { BtnHug } from "../../Button/Button";
-import { PopupProps } from "../Popup.types";
-import { ReactComponent as TrashIcon } from "Icon/trash.svg";
+import { BtnHug, Icon, Popup, PopupProps } from "shared/ui";
 
 export const DeletePopup: FC<PopupProps> = ({
     isActive,
@@ -12,7 +9,7 @@ export const DeletePopup: FC<PopupProps> = ({
 }) => {
     return isActive ? (
         <Popup setActive={setIsActive}>
-            <TrashIcon style={{ display: "block", margin: "0 auto" }} />
+            <Icon name="trash" style={{ display: "block", margin: "0 auto" }} />
             <div className={style.title}>Удалить папку</div>
             <p className={style.text}>
                 Вы действительно хотите удалить эту страницу?
