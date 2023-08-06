@@ -1,6 +1,6 @@
 import { FC, ReactNode, useState } from "react";
 import styles from "./Sidebar.module.sass";
-import { Icon } from "shared/ui";
+import { Icon, Logo } from "shared/ui";
 import { ccn } from "shared/lib";
 
 export const Sidebar: FC = () => {
@@ -51,9 +51,7 @@ export const Sidebar: FC = () => {
 
     return (
         <div className={styles.sidebar}>
-            <div className={styles.logo}>
-                T<span>ele</span>p<span>ort</span>
-            </div>
+            <Logo />
             <nav className={styles.nav}>
                 <ul className={styles.list}>
                     {tabList.map((item) => (
