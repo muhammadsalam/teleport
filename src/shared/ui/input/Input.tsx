@@ -13,6 +13,8 @@ export const Input: FC<InputProps> = ({
     type = "text",
     label,
     placeholder,
+    className,
+    ...otherProps
 }) => {
     const [isError, setIsError] = useState<boolean>(false);
     const [inputValue, setInputValue] = useState<string>("");
@@ -33,7 +35,7 @@ export const Input: FC<InputProps> = ({
     const defaultValue = type === "password" ? "" : inputValue;
 
     return (
-        <label className={styles.input}>
+        <label className={ccn(styles.input, className)} {...otherProps}>
             <span className={styles.input_title}>{label}</span>
             <div className={styles.input_container}>
                 <input
