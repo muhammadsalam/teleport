@@ -1,9 +1,9 @@
 import { ccn } from "shared/lib";
 import { Icon } from "shared/ui";
 import styles from "./Input.module.sass";
-import React, { ChangeEvent, FC, useState } from "react";
+import React, { ChangeEvent, FC, HTMLAttributes, useState } from "react";
 
-interface InputProps {
+interface InputProps extends HTMLAttributes<HTMLLabelElement> {
     type: "text" | "password";
     placeholder: string;
     label: string;
