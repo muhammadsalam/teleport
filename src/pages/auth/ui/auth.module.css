@@ -1,37 +1,4 @@
-.header {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-}
-
-.wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    height: 100%;
-}
-
-.left {
-    background-color: rgba(39, 44, 68, .6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.form {
-    width: 100%;
-    max-width: 390px;
-    display: flex;
-    flex-direction: column;
-}
-
-.right_title {
+.title {
     font-style: 500px;
     font-size: 32px;
     line-height: 120%;
@@ -49,13 +16,11 @@
     color: var(--blue-2);
     font-size: 16px;
     font-weight: 500;
-    margin-bottom: 36px;
+    margin-bottom: 28px;
     text-decoration: underline;
     text-underline-position: from-font;
 }
 
 .button {
-    &+& {
-        margin-top: 8px;
-    }
+    margin-top: 8px;
 }
