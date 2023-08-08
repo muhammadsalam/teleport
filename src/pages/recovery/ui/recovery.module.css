@@ -1,0 +1,31 @@
+.title {
+    font-style: 500px;
+    font-size: 32px;
+    line-height: 120%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.input {
+    &+& {
+        margin-top: 12px;
+    }
+}
+
+.recovery {
+    color: var(--blue-2);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 28px;
+    text-decoration: underline;
+    text-underline-position: from-font;
+}
+
+.button {
+    margin-top: 8px;
+}
+
+.link {
+    display: flex;
+    text-decoration: none;
+}

@@ -1,6 +1,6 @@
 import { BtnHug, BtnTertiary, Input } from "shared/ui";
 import style from "./auth.module.css";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { ReactComponent as AuthSVG } from "../assets/auth.svg";
 import { SplitView } from "widgets/split-view/ui/SplitView";
 import { handleFormSubmiting } from "widgets/split-view";
@@ -11,16 +11,23 @@ export const Auth: FC = () => {
         e.preventDefault();
     };
 
+    const [login, setLogin] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+
     return (
         <SplitView handleFormSubmiting={handleFormSubmit} Image={AuthSVG}>
             <div className={style.title}>Войти</div>
             <Input
+                state={login}
+                setState={setLogin}
                 type="text"
                 placeholder="Введите логин"
                 label="Имя пользователя"
                 className={style.input}
             />
             <Input
+                state={password}
+                setState={setPassword}
                 type="password"
                 placeholder="Введите пароль"
                 label="Пароль"
