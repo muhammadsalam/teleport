@@ -320,7 +320,7 @@ module.exports = function (webpackEnv) {
                 .filter((ext) => useTypeScript || !ext.includes("ts")),
             alias: {
                 // user alias
-                "~": path.resolve("src"),
+                // тут
                 Image: path.resolve("src/assets/images"),
                 Icon: path.resolve("src/assets/images/icons/"),
                 Component: path.resolve("src/components"),

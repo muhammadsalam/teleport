@@ -17,17 +17,10 @@
       "jsx": "react-jsx",
       "baseUrl": "./src",
       "paths": {
-        "~/*": ["./*"],
-        "Component/*": ["components/*"],
-        "Image/*": ["assets/images/*"],
-        "Icon/*": ["assets/images/icons/*"],
-        "Util/*": ["utils/*"],
-        "Layout/*": ["layouts/*"],
-        "Page/*": ["pages/*"],
         "Redux/*": ["redux/*"],
         "Hook/*": ["hooks/*"],
       }
   
     },
-    "include": ["src", "src/@types", "**/*.module.scss", "*.module.scss", "**/*.module.sass", "*.module.sass"]
+    "include": ["src", "src/app/@types", "**/*.module.scss", "*.module.scss", "**/*.module.sass", "*.module.sass"]
 }
