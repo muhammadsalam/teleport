@@ -4,7 +4,7 @@ import styles from "./Input.module.sass";
 import React, { ChangeEvent, FC, HTMLAttributes, useState } from "react";
 
 interface InputProps extends HTMLAttributes<HTMLLabelElement> {
-    type: "text" | "password";
+    type: "text" | "password" | "email";
     placeholder: string;
     label: string;
 }
@@ -29,7 +29,7 @@ export const Input: FC<InputProps> = ({
     }
 
     function getInputType() {
-        return isPasswordVisible ? "text" : type;
+        return isPasswordVisible ? (type === "email" ? "email" : "text") : type;
     }
 
     const defaultValue = type === "password" ? "" : inputValue;
