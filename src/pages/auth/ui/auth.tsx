@@ -4,6 +4,7 @@ import { FC } from "react";
 import { ReactComponent as AuthSVG } from "../assets/auth.svg";
 import { SplitView } from "widgets/split-view/ui/SplitView";
 import { handleFormSubmiting } from "widgets/split-view";
+import { Link } from "react-router-dom";
 
 export const Auth: FC = () => {
     const handleFormSubmit: handleFormSubmiting = (e) => {
@@ -25,15 +26,17 @@ export const Auth: FC = () => {
                 label="Пароль"
                 className={style.input}
             />
-            <a className={style.recovery} href="#">
+            <Link className={style.recovery} to="/recovery">
                 Забыли пароль?
-            </a>
+            </Link>
             <BtnHug className={style.button} grow onClick={() => {}}>
                 Войти
             </BtnHug>
-            <BtnTertiary className={style.button} grow onClick={() => {}}>
-                Создать Аккаунт
-            </BtnTertiary>
+            <Link to="/register" className={style.link}>
+                <BtnTertiary className={style.button} grow onClick={() => {}}>
+                    Создать Аккаунт
+                </BtnTertiary>
+            </Link>
         </SplitView>
     );
 };

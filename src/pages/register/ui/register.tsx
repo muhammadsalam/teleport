@@ -3,6 +3,7 @@ import { ReactComponent as RegisterSVG } from "../assets/register.svg";
 import { SplitView, handleFormSubmiting } from "widgets/split-view";
 import style from "./register.module.css";
 import { BtnHug, BtnTertiary, Input } from "shared/ui";
+import { Link } from "react-router-dom";
 
 export const Register: FC = () => {
     const handleFormSubmit: handleFormSubmiting = (e) => {
@@ -39,9 +40,11 @@ export const Register: FC = () => {
             <BtnHug className={style.button} grow onClick={() => {}}>
                 Создать аккаунт
             </BtnHug>
-            <BtnTertiary className={style.button} grow onClick={() => {}}>
-                Войти
-            </BtnTertiary>
+            <Link to="/auth" className={style.link}>
+                <BtnTertiary className={style.button} grow onClick={() => {}}>
+                    Войти
+                </BtnTertiary>
+            </Link>
         </SplitView>
     );
 };
