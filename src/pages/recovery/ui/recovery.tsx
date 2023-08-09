@@ -28,7 +28,12 @@ export const Recovery: FC = () => {
                     placeholder="Введите Email"
                     className={style.input}
                 />
-                <BtnHug className={style.button} grow onClick={() => {}}>
+                <BtnHug
+                    className={style.button}
+                    grow
+                    typeof="button"
+                    onClick={() => {}}
+                >
                     Отправить письмо
                 </BtnHug>
                 <Link to="/auth" className={style.link}>
