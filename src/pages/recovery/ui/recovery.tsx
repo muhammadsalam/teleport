@@ -40,19 +40,14 @@ export const Recovery: FC = () => {
                         placeholder="Введите Email"
                         className={style.input}
                     />
-                    <BtnHug
-                        className={style.button}
-                        grow
-                        typeof="button"
-                        onClick={() => {}}
-                    >
+                    <BtnHug className={style.button} grow>
                         Отправить письмо
                     </BtnHug>
                     <Link to="/auth" className={style.link}>
                         <BtnTertiary
                             className={style.button}
                             grow
-                            onClick={() => {}}
+                            typeof="button"
                         >
                             Войти
                         </BtnTertiary>
