@@ -6,5 +6,6 @@ export interface InputProps extends HTMLAttributes<HTMLLabelElement> {
     label: string;
     state: string;
     setState: (value: string) => void;
+    disabled?: boolean;
 
 }
