@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useCallback } from "react";
+import { FC, useState, useEffect, useRef } from "react";
 import { ReactComponent as RecoverySVG } from "../assets/recovery.svg";
 import { SplitView, handleFormSubmiting } from "widgets/split-view";
 import style from "./recovery.module.css";
@@ -7,17 +7,25 @@ import { Link } from "react-router-dom";
 import QueryString from "qs";
 
 export const Recovery: FC = () => {
-    const handleFormSubmit: handleFormSubmiting = (e) => {
-        e.preventDefault();
-    };
-
     const [isEmailGet, setIsEmailGet] = useState<boolean>(false);
+    const [isEmailPost, setIsEmailPost] = useState<boolean>(false);
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [confirmPassword, setConfirmPassword] = useState<string>("");
 
-    const handleRequest = () => {};
+    const handleFormSubmit: handleFormSubmiting = (e) => {
+        if (!isEmailGet) {
+            console.log("письмо отправлено");
+
+            setIsEmailPost(true);
+            return e.preventDefault();
+        }
+
+        console.log("пароль восстановлен мол");
+
+        return e.preventDefault();
+    };
 
     useEffect(() => {
         const params = QueryString.parse(window.location.search.substring(1));
@@ -39,20 +47,20 @@ export const Recovery: FC = () => {
                         label="Email адрес"
                         placeholder="Введите Email"
                         className={style.input}
+                        disabled={isEmailPost}
                     />
                     <BtnHug
                         className={style.button}
                         grow
-                        typeof="button"
-                        onClick={() => {}}
+                        disabled={isEmailPost}
                     >
-                        Отправить письмо
+                        {isEmailPost ? "Письмо отправлено" : "Отправить письмо"}
                     </BtnHug>
                     <Link to="/auth" className={style.link}>
                         <BtnTertiary
                             className={style.button}
                             grow
-                            onClick={() => {}}
+                            typeof="button"
                         >
                             Войти
                         </BtnTertiary>

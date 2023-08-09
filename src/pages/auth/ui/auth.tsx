@@ -36,11 +36,11 @@ export const Auth: FC = () => {
             <Link className={style.recovery} to="/recovery">
                 Забыли пароль?
             </Link>
-            <BtnHug className={style.button} grow onClick={() => {}}>
+            <BtnHug className={style.button} grow>
                 Войти
             </BtnHug>
             <Link to="/register" className={style.link}>
-                <BtnTertiary className={style.button} grow onClick={() => {}}>
+                <BtnTertiary className={style.button} grow typeof="button">
                     Создать Аккаунт
                 </BtnTertiary>
             </Link>

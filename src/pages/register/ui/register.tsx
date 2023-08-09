@@ -54,7 +54,7 @@ export const Register: FC = () => {
                 Создать аккаунт
             </BtnHug>
             <Link to="/auth" className={style.link}>
-                <BtnTertiary className={style.button} grow onClick={() => {}}>
+                <BtnTertiary className={style.button} grow typeof="button">
                     Войти
                 </BtnTertiary>
             </Link>

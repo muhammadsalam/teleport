@@ -1,12 +1,12 @@
 import { Icon } from "shared/ui";
 import "./Button.scss";
-import { FC, HTMLAttributes } from "react";
+import { FC, HTMLAttributes, MutableRefObject } from "react";
 import { ccn } from "shared/lib";
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
     children: any;
     disabled?: boolean;
-    onClick: () => void;
+    onClick?: () => void;
     grow?: boolean;
 }
 

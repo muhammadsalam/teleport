@@ -11,6 +11,7 @@ export const Input: FC<InputProps> = ({
     state,
     setState,
     className,
+    disabled,
     ...otherProps
 }) => {
     const [isError, setIsError] = useState<boolean>(false);
@@ -42,6 +43,7 @@ export const Input: FC<InputProps> = ({
                     type={getInputType()}
                     placeholder={placeholder}
                     defaultValue={defaultValue}
+                    disabled={disabled}
                     onChange={handleInputChange}
                 />
                 {type === "password" && (
