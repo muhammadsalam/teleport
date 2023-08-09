@@ -1,27 +1,23 @@
 import { ccn } from "shared/lib";
 import { Icon } from "shared/ui";
 import styles from "./Input.module.sass";
-import React, { ChangeEvent, FC, HTMLAttributes, useState } from "react";
-
-interface InputProps extends HTMLAttributes<HTMLLabelElement> {
-    type: "text" | "password";
-    placeholder: string;
-    label: string;
-}
+import { ChangeEvent, FC, useState } from "react";
+import { InputProps } from "./Input.types";
 
 export const Input: FC<InputProps> = ({
     type = "text",
     label,
     placeholder,
+    state,
+    setState,
     className,
     ...otherProps
 }) => {
     const [isError, setIsError] = useState<boolean>(false);
-    const [inputValue, setInputValue] = useState<string>("");
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-        setInputValue(event.target.value);
+        setState(event.target.value);
     }
 
     function togglePasswordVisibility() {
@@ -29,10 +25,10 @@ export const Input: FC<InputProps> = ({
     }
 
     function getInputType() {
-        return isPasswordVisible ? "text" : type;
+        return isPasswordVisible ? (type === "email" ? "email" : "text") : type;
     }
 
-    const defaultValue = type === "password" ? "" : inputValue;
+    const defaultValue = type === "password" ? "" : state;
 
     return (
         <label className={ccn(styles.input, className)} {...otherProps}>
