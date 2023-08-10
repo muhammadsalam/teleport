@@ -1,0 +1,22 @@
+.title {
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 120%;
+    margin-bottom: 24px;
+}
+
+.description {
+    color: #94B3E2;
+    font-size: 16px;
+    line-height: 160%;
+    margin-bottom: 42px;
+}
+
+.button {
+    max-width: 330px;
+}
+
+.link {
+    display: flex;
+    text-decoration: none;
+}
