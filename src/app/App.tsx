@@ -1,8 +1,8 @@
-import { Auth } from "pages/auth";
+import { Auth } from "pages/access";
 import { NotFoundError } from "pages/error";
 import { InternalServerError } from "pages/error/500";
-import { Recovery } from "pages/recovery";
-import { Register } from "pages/register";
+import { Recovery } from "pages/access";
+import { Register } from "pages/access";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
