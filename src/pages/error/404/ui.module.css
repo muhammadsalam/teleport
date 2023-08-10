@@ -15,3 +15,8 @@
 .button {
     max-width: 330px;
 }
+
+.link {
+    display: flex;
+    text-decoration: none;
+}
