@@ -1,47 +1,51 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, useState } from "react";
 import styles from "./Sidebar.module.sass";
 import { Icon, Logo } from "shared/ui";
 import { ccn } from "shared/lib";
+import { Link } from "react-router-dom";
+import { tabListType } from "./Sidebar.types";
 
 export const Sidebar: FC = () => {
     const [isSwitchActive, setIsSwitchActive] = useState<boolean>(false);
-    const [activeTab, setActiveTab] = useState<string>("Мои страницы");
+    const [activeTab, setActiveTab] = useState<string>(
+        window.location.pathname === "/" ? "/pages" : window.location.pathname
+    );
 
     const handleSwitchClick: () => void = () => {
         setIsSwitchActive(!isSwitchActive);
     };
 
-    type tabListType = {
-        icon: ReactNode;
-        title: string;
-        span?: ReactNode;
-    }[];
-
     const tabList: tabListType = [
         {
             icon: <Icon name="page" />,
             title: "Мои страницы",
+            to: "/pages",
         },
         {
             icon: <Icon name="coin" />,
             title: "Баланс",
             span: <span className={styles.list__item__span}>50,00 ₽</span>,
+            to: "/balance",
         },
         {
             icon: <Icon name="net" />,
             title: "Домены",
+            to: "/domains",
         },
         {
             icon: <Icon name="partners" />,
             title: "Партнерская программа",
+            to: "/affiliate",
         },
         {
             icon: <Icon name="book" />,
             title: "Обучающие материалы",
+            to: "/materials",
         },
         {
             icon: <Icon name="gear-wheel" />,
             title: "Настройки",
+            to: "/settings",
         },
     ];
 
@@ -58,20 +62,20 @@ export const Sidebar: FC = () => {
                         <li
                             key={item.title}
                             className={styles.list__item}
-                            onClick={() => handleActiveTabChange(item.title)}
+                            onClick={() => handleActiveTabChange(item.to)}
                         >
-                            <a
+                            <Link
                                 className={ccn(
                                     styles.list__link,
-                                    activeTab === item.title &&
+                                    activeTab.includes(item.to) &&
                                         styles.list__link_active
                                 )}
-                                href="#"
+                                to={item.to}
                             >
                                 {item.icon}
                                 {item.title}
                                 {item.span}
-                            </a>
+                            </Link>
                         </li>
                     ))}
                 </ul>
