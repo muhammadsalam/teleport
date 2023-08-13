@@ -7,7 +7,12 @@ import { DeletePopup } from "entities/delete-popup";
 import { EditPopup } from "entities/edit-popup";
 import { Icon } from "shared/ui";
 
-export const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
+export const FolderItem: FC<FolderItemProps> = ({
+    count,
+    text,
+    className,
+    ...otherProps
+}) => {
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isMounted, setIsMounted] = useState<boolean>(false);
 
@@ -76,7 +81,7 @@ export const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
     );
 
     return (
-        <div className={styles.folder}>
+        <div className={ccn(styles.folder, className)} {...otherProps}>
             <div
                 className={ccn(styles.folderItem, isActive && styles.active)}
                 onClick={handleActivating}
