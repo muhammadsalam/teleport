@@ -1,0 +1,15 @@
+.slider {
+    width: calc(100% + var(--main-padding));
+    padding-right: var(--main-padding);
+}
+
+.slide {
+    display: inline-block;
+    flex-grow: 1;
+    max-width: 180px;
+}
+
+.slide__active {
+    position: relative;
+    z-index: 2;
+}

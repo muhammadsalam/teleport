@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
+import { Pages } from "../pages";
 
 export const HomeRouting: FC = () => {
     return (
         <Routes>
-            <Route path="" element="pages">
+            <Route path="" element={<Pages />}>
                 <Route path="pages" />
             </Route>
             <Route path="balance" element="balance" />
