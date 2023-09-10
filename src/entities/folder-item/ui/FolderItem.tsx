@@ -3,16 +3,22 @@ import { FC, MouseEvent, useEffect, useRef, useState } from "react";
 import { FolderItemProps } from "./FolderItem.types";
 import { ccn, useOutsideClick } from "shared/lib";
 import { CSSTransition } from "react-transition-group";
-import { DeletePopup } from "entities/delete-popup";
-import { EditPopup } from "entities/edit-popup";
 import { Icon } from "shared/ui";
 
-export const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
-    const [isActive, setIsActive] = useState<boolean>(false);
+export const FolderItem: FC<FolderItemProps> = ({
+    count,
+    text,
+    className,
+    setIsEditing,
+    setIsDeleting,
+    activeFolder,
+    handleActive,
+    folderId,
+    activeContextFolderId,
+    setActiveContextFolderId,
+    ...otherProps
+}) => {
     const [isMounted, setIsMounted] = useState<boolean>(false);
-
-    const [isEditing, setIsEditing] = useState<boolean>(false);
-    const [isDeleting, setIsDeleting] = useState<boolean>(false);
 
     const contextRef = useRef<HTMLDivElement>(null);
 
@@ -25,60 +31,74 @@ export const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
             `.${styles.folderItem_button}`
         );
 
-        if (folderItemButton && !isActive) {
-            setIsActive(!isActive);
+        if (folderItemButton && activeFolder.folderId !== folderId) {
+            handleActive({ folderId });
         }
     };
 
     useEffect(() => {
         const rect = contextRef.current?.getBoundingClientRect();
-        console.log(rect?.left, rect?.width);
+        // console.log(rect?.left, rect?.width);
 
         if (rect && checkElementOutX(rect)) {
             setLeftTransform(
                 -Math.floor(rect.left + rect.width - window.innerWidth + 5)
             );
-            console.log(checkElementOutX(rect) && "rect есть и true");
+            // console.log(checkElementOutX(rect) && "rect есть и true");
             return;
         }
-        if (rect)
-            console.log(
-                checkElementOutX(rect) && "тут тоже есть _rect_ и true"
-            );
+        // if (rect)
+        // console.log(
+        // checkElementOutX(rect) && "тут тоже есть _rect_ и true"
+        // );
 
         setLeftTransform(0);
     }, [isMounted]);
 
     const handleContext = () => {
-        setIsMounted(!isMounted);
+        setActiveContextFolderId(
+            activeContextFolderId === folderId ? null : folderId
+        );
     };
+
+    useEffect(() => {
+        setIsMounted(activeContextFolderId === folderId);
+        // console.log("activeContextFolderId");
+    }, [activeContextFolderId]);
 
     const checkElementOutX: (elemRect: {
         left: number;
         width: number;
     }) => boolean = (elemRect) => {
         // Если положение элемента слева + ширина > ширины окна
-        console.log(
-            "left + width > window",
-            elemRect.left + elemRect.width,
-            window.innerWidth
-        );
+        // console.log(
+        //     "left + width > window",
+        //     elemRect.left + elemRect.width,
+        //     window.innerWidth
+        // );
         if (elemRect.left + elemRect.width > window.innerWidth) return true;
         return false;
     };
 
-    useOutsideClick(
-        contextRef,
-        () => {
-            setIsMounted(false);
-        },
-        styles.folderItem_button
-    );
+    const folderRef = useRef<HTMLDivElement>(null);
 
+    const handleOutsideClick = () => {
+        setActiveContextFolderId(null);
+        setIsMounted(false);
+    };
+
+    useOutsideClick(folderRef, handleOutsideClick);
     return (
-        <div className={styles.folder}>
+        <div
+            ref={folderRef}
+            className={ccn(styles.folder, className)}
+            {...otherProps}
+        >
             <div
-                className={ccn(styles.folderItem, isActive && styles.active)}
+                className={ccn(
+                    styles.folderItem,
+                    activeFolder.folderId === folderId && styles.active
+                )}
                 onClick={handleActivating}
             >
                 <div className={styles.folderItem_count}>{count}</div>
@@ -140,20 +160,6 @@ export const FolderItem: FC<FolderItemProps> = ({ count, text }) => {
                     </ul>
                 </div>
             </CSSTransition>
-            {isEditing && (
-                <EditPopup
-                    isActive={isEditing}
-                    setIsActive={setIsEditing}
-                    agree={() => {}}
-                />
-            )}
-            {isDeleting && (
-                <DeletePopup
-                    isActive={isDeleting}
-                    setIsActive={setIsDeleting}
-                    agree={() => {}}
-                />
-            )}
         </div>
     );
 };

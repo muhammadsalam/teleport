@@ -28,7 +28,7 @@ export const SelectLang: FC = () => {
         setValue(option);
     }
 
-    useOutsideClick(dropdownRef, () => setIsMounted(false), style.select);
+    useOutsideClick(dropdownRef, () => setIsMounted(false));
 
     return (
         <div className={style.select}>

@@ -28,7 +28,7 @@ export const Dropdown: FC<DropdownProps> = ({
         setDropdownValue(option);
     }
 
-    useOutsideClick(dropdownRef, handleMountedChange, styles.input);
+    useOutsideClick(dropdownRef, handleMountedChange);
 
     return (
         <label className={styles.input}>
