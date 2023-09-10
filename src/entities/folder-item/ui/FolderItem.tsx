@@ -14,6 +14,8 @@ export const FolderItem: FC<FolderItemProps> = ({
     activeFolder,
     handleActive,
     folderId,
+    activeContextFolderId,
+    setActiveContextFolderId,
     ...otherProps
 }) => {
     const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -45,17 +47,24 @@ export const FolderItem: FC<FolderItemProps> = ({
             // console.log(checkElementOutX(rect) && "rect есть и true");
             return;
         }
-        if (rect)
-            // console.log(
-            // checkElementOutX(rect) && "тут тоже есть _rect_ и true"
-            // );
+        // if (rect)
+        // console.log(
+        // checkElementOutX(rect) && "тут тоже есть _rect_ и true"
+        // );
 
-            setLeftTransform(0);
+        setLeftTransform(0);
     }, [isMounted]);
 
     const handleContext = () => {
-        setIsMounted(!isMounted);
+        setActiveContextFolderId(
+            activeContextFolderId === folderId ? null : folderId
+        );
     };
+
+    useEffect(() => {
+        setIsMounted(activeContextFolderId === folderId);
+        // console.log("activeContextFolderId");
+    }, [activeContextFolderId]);
 
     const checkElementOutX: (elemRect: {
         left: number;
@@ -71,16 +80,20 @@ export const FolderItem: FC<FolderItemProps> = ({
         return false;
     };
 
-    useOutsideClick(
-        contextRef,
-        () => {
-            setIsMounted(false);
-        },
-        styles.folderItem_button
-    );
+    const folderRef = useRef<HTMLDivElement>(null);
 
+    const handleOutsideClick = () => {
+        setActiveContextFolderId(null);
+        setIsMounted(false);
+    };
+
+    useOutsideClick(folderRef, handleOutsideClick);
     return (
-        <div className={ccn(styles.folder, className)} {...otherProps}>
+        <div
+            ref={folderRef}
+            className={ccn(styles.folder, className)}
+            {...otherProps}
+        >
             <div
                 className={ccn(
                     styles.folderItem,

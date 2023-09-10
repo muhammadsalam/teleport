@@ -7,6 +7,9 @@ export interface FolderItemProps extends HTMLAttributes<HTMLDivElement>, Folder 
     setIsDeleting: (state: boolean) => void;
     activeFolder: Folder;
     handleActive: (state: Folder) => void;
+    activeContextFolderId: number | null;
+    setActiveContextFolderId: (state: number | null) => void
+
 }
 
 export type MenuPosition = {
